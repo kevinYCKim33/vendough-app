@@ -4,13 +4,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    binding.pry
     super
   end
 
   # POST /resource
   def create
-    binding.pry
     super
   end
 
