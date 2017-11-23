@@ -4,11 +4,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
+    binding.pry
     super
   end
 
   # POST /resource
   def create
+    binding.pry
     super
   end
 
@@ -40,12 +42,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, :password, :password_confirmation])
+    # params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
+
+#   def configure_permitted_parameters
+#   devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email])
+#   devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :phone, :email, bank_attributes: [:bank_name, :bank_account]])
+# end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :password, :password_confirmation, :current_password])
+    # params.require(:user).permit(:username, :email, :password, :password_confirmation, :current_password)
   end
 
   # The path used after sign up.
