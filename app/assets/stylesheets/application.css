@@ -13,9 +13,57 @@
  *= require_tree .
  *= require_self
  */
-
+ .page-header h2 {
+   margin-top: 0;
+   text-align: center;
+   padding-top: 10px;
+   color: gray;
+   font-family: 'Anton', sans-serif;
+ }
+.container {
+  max-width: 300px;
+}
 
  .list-group {
    padding-left: 30px;
    max-width: 500px;
+ }
+
+ .page-header {
+   background-color: white;
+   margin-top: 0;
+ }
+
+ .form-signin {
+   max-width: 330px;
+   padding: 15px;
+   margin: 0 auto;
+ }
+ .form-signin .form-signin-heading,
+ .form-signin .checkbox {
+   margin-bottom: 10px;
+ }
+ .form-signin .checkbox {
+   font-weight: normal;
+ }
+ .form-signin .form-control {
+   position: relative;
+   height: auto;
+   -webkit-box-sizing: border-box;
+           box-sizing: border-box;
+   padding: 10px;
+   font-size: 16px;
+ }
+ .form-signin .form-control:focus {
+   z-index: 2;
+ }
+ .form-signin input[type="email"] {
+   margin-bottom: -1px;
+   border-bottom-right-radius: 0;
+   border-bottom-left-radius: 0;
+ }
+ .form-signin input[type="password"] {
+   margin-bottom: 10px;
+   border-top-left-radius: 0;
+   border-top-right-radius: 0;
  }
