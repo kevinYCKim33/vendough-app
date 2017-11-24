@@ -5,9 +5,7 @@ class FriendsController < ApplicationController
   end
 
   def show
-    binding.pry
-    if current_user.id == params[:id].to_i
-      binding.pry
+    if current_user.id == params[:id]
       flash[:error] = "You cannot be your own friend"
       redirect_to friends_path
     else
