@@ -14,10 +14,8 @@
  *= require_self
  */
 
-body {
-  padding-left: 30px;
-}
 
  .list-group {
+   padding-left: 30px;
    max-width: 500px;
  }
