@@ -1,2 +1,10 @@
 <h1>Welcome <%=current_user.name %>!</h1>
 <h3>You have $<%=display_credit%> in your account.</h3>
+
+<div class="list-group">
+  <%@transactions.each do |transaction|%>
+  <a href="/friends/1" class="list-group-item">
+    <h4 class="list-group-item-heading"><%=transaction.description%></h4>
+  </a>
+  <%end%>
+</div>
