@@ -1,9 +1,10 @@
 <div class="container" id="feed">
   <center>
     <h4> Main Feed </h4>
-      <% if flash[:message] %>
-        <p style="color:green;"> <%= flash[:message] %> </p>
-      <% end %>
+      <%# if flash[:message] %>
+        <!-- <p style="color:green;"> <%#= flash[:message] %> </p> -->
+      <%# end %>
+      <%= render 'flash_message' %>
 
       <% if @dealings.empty? %>
         <p><b>Once you and/or your contacts complete transactions <br>

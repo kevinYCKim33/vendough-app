@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :dealings, only: [:index, :new]
   end
 
+  resources :comments, only: [:create]
+
   get '/contacts', to: 'users#index', as: 'contacts'
   get '/add_fund', to: 'users#edit', as: 'add_fund'
 

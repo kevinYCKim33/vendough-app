@@ -14,6 +14,17 @@
  *= require_self
  */
 
+/*new comment send button */
+#new_comment > input.btn.btn-sm.btn-primary {
+  border-color: gray;
+  background-color: white;
+  color: gray;
+}
+
+#comment_comment {
+  min-width: 250px;
+}
+
 #error_explanation > ul {
   list-style-type: none;
 }
