@@ -2,8 +2,10 @@ class CommentsController < ApplicationController
   before_action :signed_in?
 
   def create
-    @tag = Tag.find(params[:id])
-    @dealings = Dealing.all_with_tags_completed(@tag)
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment.save
+    redirect_back(fallback_location: root_path)
   end
 
   def signed_in?
@@ -11,6 +13,12 @@ class CommentsController < ApplicationController
       flash[:error] = "Please sign in or sign up first."
       redirect_to new_user_session_path
     end
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:content, :dealing_id)
   end
 
 end

@@ -69,6 +69,7 @@ class DealingsController < ApplicationController
 
   def show
     @dealing = Dealing.find(params[:id])
+    @comments = @dealing.comments
   end
 
   def destroy

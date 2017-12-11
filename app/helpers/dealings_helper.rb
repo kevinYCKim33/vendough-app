@@ -60,6 +60,10 @@ module DealingsHelper
     end
   end
 
+  def commenter(comment)
+    link_to User.find_by(id: comment.user_id).name, user_path(comment.user_id)
+  end
+
   ## wanted this helper to work, but couldn't pull it off.
   # def display_dealing_errors(dealing)
   #  if dealing.errors.any?
