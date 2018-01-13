@@ -1,10 +1,15 @@
 <div class="container" id="feed">
   <center>
-    <h4> Main Feed </h4>
+    <div class="btn-group" role="group" aria-label="...">
+      <button type="button" class="btn btn-default" id="world"><span class="glyphicon glyphicon-globe"></button>
+      <button type="button" class="btn btn-default" id="associates"><span class="glyphicon glyphicon-user"><span class="glyphicon glyphicon-user"></button>
+      <button type="button" class="btn btn-default" id="you"><span class="glyphicon glyphicon-user"></button>
+    </div>
       <%# if flash[:message] %>
         <!-- <p style="color:green;"> <%#= flash[:message] %> </p> -->
       <%# end %>
       <%= render 'flash_message' %>
+
 
       <% if @dealings.empty? %>
         <p><b>Once you and/or your contacts complete transactions <br>
