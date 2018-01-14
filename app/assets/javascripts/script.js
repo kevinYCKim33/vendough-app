@@ -8,9 +8,11 @@ $( document ).ready(function() {
 function loadGlobalTransactions() {
   $("#globe").on('click', function() {
     $.get("/dealings" + ".json", function(resp) {
-      alert("you got your dealings json yet?");
+      const transactionsListHtml = HandlebarsTemplates['transactions_list']({
+        transactions: resp
+      });
+      $('.list-group').html(transactionsListHtml);
     });
-    //something here appending to dom
   });
 };
 
