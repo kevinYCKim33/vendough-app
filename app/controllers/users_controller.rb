@@ -4,7 +4,20 @@ class UsersController < ApplicationController
 
   def index
     @contacts = User.contacts(current_user)
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @contacts.to_json }
+    end
   end
+
+  # def show
+  #    @post = Post.find(params[:id])
+  #    respond_to do |format|
+  #      format.html { render :show }
+  #      format.json { render json: @post.to_json(only: [:title, :description, :id],
+  #                              include: [author: { only: [:name]}]) }
+  #    end
+  #  end
 
   def edit #they type 3000/add_fund
     @user = current_user
@@ -45,5 +58,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:credit)
   end
-  
+
 end

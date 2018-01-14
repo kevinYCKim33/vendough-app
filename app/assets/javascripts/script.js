@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-    // alert( "jQUERY ready!" );
+    alert( "jQUERY ready!" );
     globeGotHit();
     associatesGotHit();
     youGotHit();
@@ -13,8 +13,14 @@ function globeGotHit() {
 
 function associatesGotHit() {
   $("#associates").on('click', function() {
-    alert("contacts got hit");
-  })
+    // debugger;
+    $.get("/contacts" + ".json", function(resp) {
+      const contactsListHtml = HandlebarsTemplates['contacts_list']({
+        contacts: resp
+      });
+      $('.list-group').html(contactsListHtml);
+    });
+  });
 }
 
 function youGotHit() {
