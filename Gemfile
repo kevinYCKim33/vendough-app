@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 gem 'figaro'
 gem 'handlebars_assets'
+gem 'active_model_serializers'
 gem 'dotenv-rails'
 gem 'omniauth-facebook'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

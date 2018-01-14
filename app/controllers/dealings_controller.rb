@@ -10,6 +10,10 @@ class DealingsController < ApplicationController
       render '/users/show'
     else
       @dealings = Dealing.newest_first
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @dealings}
+      end
     end
   end
 

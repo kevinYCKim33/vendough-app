@@ -1,19 +1,21 @@
 $( document ).ready(function() {
     alert( "jQUERY ready!" );
-    globeGotHit();
-    associatesGotHit();
+    loadGlobalTransactions();
+    loadContacts();
     youGotHit();
 });
 
-function globeGotHit() {
+function loadGlobalTransactions() {
   $("#globe").on('click', function() {
-    alert("this globe got hit");
-  })
-}
+    $.get("/dealings" + ".json", function(resp) {
+      alert("you got your dealings json yet?");
+    });
+    //something here appending to dom
+  });
+};
 
-function associatesGotHit() {
+function loadContacts() {
   $("#associates").on('click', function() {
-    // debugger;
     $.get("/contacts" + ".json", function(resp) {
       const contactsListHtml = HandlebarsTemplates['contacts_list']({
         contacts: resp
