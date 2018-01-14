@@ -12,7 +12,8 @@ class DealingsController < ApplicationController
       @dealings = Dealing.newest_first
       respond_to do |format|
         format.html { render :index }
-        format.json { render json: @dealings}
+        format.json { render json: @dealings.to_json({:include => [:sender, :recipient]})}
+        # render json: tests.as_json(:include => {:questions => {:include => :subject}, :bonuses => {:include => :subject}})
       end
     end
   end
