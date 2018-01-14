@@ -11,6 +11,7 @@
 // about supported directives. PERFECT FILE ORDER BELOW! WHOLE DAY WAS LOST ON THIS.
 //
 //= require rails-ujs
+//= require local-time
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks

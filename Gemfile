@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 gem 'figaro'
 gem 'handlebars_assets'
+gem 'local_time'
 gem 'active_model_serializers'
 gem 'dotenv-rails'
 gem 'omniauth-facebook'

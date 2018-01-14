@@ -10,7 +10,7 @@
     <%@dealings.each do |dealing|%>
       <div class="list-group-item">
         <b> Request to <%= link_to dealing.recipient.name, dealing.recipient %>: <%= number_to_currency(dealing.amount) %></b><br>
-        <small style="color: #a8a8a8"><%= dealing.exact_date %></small> <br>
+        <small style="color: #a8a8a8"><%= local_time(dealing.created_at,'%b %d, %Y %I:%M %p') %></small> <br>
         <%= dealing.description %>
         <br>
         <%= display_pending_tags(dealing.tags)%>

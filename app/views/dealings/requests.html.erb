@@ -12,7 +12,7 @@
     <%@requests.each do |request|%>
     <div class="list-group-item" >
       <b> <%= link_to request.sender_name, request.sender %> requests <%=number_to_currency(request.amount) %></b><br>
-      <small style="color: #a8a8a8">  <%= request.exact_date %> </small><br>
+      <small style="color: #a8a8a8">  <%= local_time(request.created_at,'%b %d, %Y %I:%M %p') %> </small><br>
       <%= request.description %>
       <br>
       <%= display_pending_tags(request.tags)%>

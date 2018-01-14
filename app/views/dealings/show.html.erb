@@ -2,7 +2,7 @@
   <div class="list-group-item" >
       <b><%= link_to @dealing.sender_name, @dealing.sender %></b> <%= charged_or_paid(@dealing) %>  <b><%= link_to @dealing.recipient_name, @dealing.recipient%></b>
       <br>
-      <small style="color: #a8a8a8">  <%= @dealing.exact_date %> </small>
+      <small style="color: #a8a8a8">  <%= local_time(@dealing.updated_at,'%b %d, %Y %I:%M %p') %> </small>
       <br>
       <%= @dealing.description %>
       <br>
