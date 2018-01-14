@@ -52,11 +52,12 @@ class Dealing < ApplicationRecord
   end
 
   def concise_date
-    (self.created_at - 25200).strftime("%b %d")
+    binding.pry
+    (self.created_at - 28800).strftime("%b %d")
   end
 
   def exact_date
-    (self.created_at - 25200).strftime("%b %d, %Y %I:%M %p")
+    (self.created_at - 28800).strftime("%b %d, %Y %I:%M %p")
   end
 
   def pay_dealing

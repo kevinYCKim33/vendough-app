@@ -1,10 +1,13 @@
 {{#transactions}}
 <div class="list-group-item">
 
-  <p><b><a href="/users/{{sender_id}}/dealings">{{sender.name}}</a></b> charged/paid  <b><a href="/users/{{recipient_id}}/dealings">{{recipient.name}}</a></b></p>
+  <p><b><a href="/users/{{sender_id}}/dealings">{{sender.name}}</a>
+  </b>{{charged_or_paid}}<b>
+
+    <a href="/users/{{recipient_id}}/dealings">{{recipient.name}}</a></b></p>
 
   <div style="position: absolute; top: 10px; right: 15px; width: 90px; text-align:right;">
-    {{updated_at}} <span class="glyphicon glyphicon-globe"></span>
+    {{concise_date}} <span class="glyphicon glyphicon-globe"></span>
 </div>
   <b><div style="color: pink; position: absolute; bottom: 48px; right: 15px; width: 150px; text-align:right;">+/- ${{amount}}</div></b>
 

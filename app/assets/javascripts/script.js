@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-    alert( "jQUERY ready!" );
     loadGlobalTransactions();
     loadContacts();
     youGotHit();
