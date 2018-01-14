@@ -7,12 +7,17 @@ class DealingsController < ApplicationController
     if params[:user_id]
       @user = User.find_by(id: params[:user_id])
       @dealings = Dealing.user_dealings(@user)
-      render '/users/show'
+      respond_to do |format|
+        format.html { render '/users/show' }
+        # format.json { render json: @dealings.to_json({:include => [:sender, :recipient]})}
+        format.json { render json: @dealings}
+      end
     else
       @dealings = Dealing.newest_first
       respond_to do |format|
         format.html { render :index }
-        format.json { render json: @dealings.to_json({:include => [:sender, :recipient]})}
+        # format.json { render json: @dealings.to_json({:include => [:sender, :recipient]})}
+        format.json { render json: @dealings}
       end
     end
   end
