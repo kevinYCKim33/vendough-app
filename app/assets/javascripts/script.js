@@ -2,7 +2,7 @@ $( document ).ready(function() {
     loadGlobalTransactions();
     loadContacts();
     loadPersonalTransactions();
-    // createComment();
+    createComment();
 });
 
 function loadGlobalTransactions() {
@@ -46,9 +46,9 @@ function loadPersonalTransactions() {
 
 function createComment() {
   $('form#new_comment').submit(function(event) {
-    debugger;
+    // debugger;
     event.preventDefault();
-    debugger;
+    // debugger;
     let values = $(this).serialize();
 
     let posting = $.post('/comments', values);
@@ -57,7 +57,8 @@ function createComment() {
       const newCommentHtml = HandlebarsTemplates['new_comment']({
         comment: data
       });
-      $('.container').append(newCommentHtml)
+      // debugger;
+      $(newCommentHtml).insertBefore('.list-group-item:last')
     })
   })
 }
