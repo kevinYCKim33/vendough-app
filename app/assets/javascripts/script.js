@@ -1,9 +1,20 @@
-$( document ).ready(function() {
+$( document ).on('turbolinks:load',function() {
     loadGlobalTransactions();
     loadContacts();
     loadPersonalTransactions();
     createComment();
 });
+
+// $( document ).on('turbolinks:load', function() {
+//   // your code
+// }
+
+// $(document).on('page:change', function() {
+//   loadGlobalTransactions();
+//   loadContacts();
+//   loadPersonalTransactions();
+//   createComment();
+// });
 
 function loadGlobalTransactions() {
   $("#globe").on('click', function() {
@@ -46,18 +57,13 @@ function loadPersonalTransactions() {
 
 function createComment() {
   $('form#new_comment').submit(function(event) {
-    // debugger;
     event.preventDefault();
-    // debugger;
     let values = $(this).serialize();
-
     let posting = $.post('/comments', values);
-
     posting.done(function(data) {
       const newCommentHtml = HandlebarsTemplates['new_comment']({
         comment: data
       });
-      // debugger;
       $(newCommentHtml).insertBefore('.list-group-item:last')
     })
   })

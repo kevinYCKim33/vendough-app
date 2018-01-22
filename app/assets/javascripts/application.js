@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require local-time
-//= require jquery
+//= require jquery3
 //= require jquery_ujs
 //= require turbolinks
 //= require handlebars
