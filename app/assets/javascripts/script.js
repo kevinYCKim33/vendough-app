@@ -2,6 +2,7 @@ $( document ).ready(function() {
     loadGlobalTransactions();
     loadContacts();
     loadPersonalTransactions();
+    // createComment();
 });
 
 function loadGlobalTransactions() {
@@ -39,6 +40,24 @@ function loadPersonalTransactions() {
         const currentUserTransactionsListHtml = "<br><br><center><p><b>When you complete a transaction it will show up here.</b></p></center>"
         $('.list-group').html(currentUserTransactionsListHtml);
       }
+    })
+  })
+}
+
+function createComment() {
+  $('form#new_comment').submit(function(event) {
+    debugger;
+    event.preventDefault();
+    debugger;
+    let values = $(this).serialize();
+
+    let posting = $.post('/comments', values);
+
+    posting.done(function(data) {
+      const newCommentHtml = HandlebarsTemplates['new_comment']({
+        comment: data
+      });
+      $('.container').append(newCommentHtml)
     })
   })
 }

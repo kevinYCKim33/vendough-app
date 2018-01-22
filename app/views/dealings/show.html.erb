@@ -9,7 +9,6 @@
       <%= display_link_tags(@dealing.tags) %>
   </div>
 
-  <%= render partial: 'dealing_comments', collection: @comments, as: :comment %>
 
   <div class="list-group-item">
     <%= form_for @dealing.comments.build do |f| %>
@@ -18,4 +17,6 @@
       <%= f.submit "Send", class: "btn btn-sm btn-primary" %>
     <% end %>
   </div>
+  
+  <%= render partial: 'dealing_comments', collection: @comments, as: :comment %>
 </div>
