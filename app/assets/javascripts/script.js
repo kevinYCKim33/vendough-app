@@ -1,20 +1,10 @@
 $( document ).on('turbolinks:load',function() {
+  // turbolinks is a rails 5 fix
     loadGlobalTransactions();
     loadContacts();
     loadPersonalTransactions();
     createComment();
 });
-
-// $( document ).on('turbolinks:load', function() {
-//   // your code
-// }
-
-// $(document).on('page:change', function() {
-//   loadGlobalTransactions();
-//   loadContacts();
-//   loadPersonalTransactions();
-//   createComment();
-// });
 
 function loadGlobalTransactions() {
   $("#globe").on('click', function() {

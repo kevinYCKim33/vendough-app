@@ -1,5 +1,5 @@
 <div class="list-group-item">
   <font size="-1.2"><%=commenter(comment)%>: <%= comment.content %></font>
   <br>
-  <small style="color:#a8a8a8"><%= local_time(comment.created_at, '%b %d') %> </small>
+  <small style="color:#a8a8a8"><%= local_time(comment.created_at, '%b %d, %Y %I:%M %p') %> </small>
 </div>
