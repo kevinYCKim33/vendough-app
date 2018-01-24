@@ -33,7 +33,7 @@ module DealingsHelper
   end
 
   def long_rectangular_block
-    "btn btn-sm btn-default btn-block"
+    "details-button btn btn-sm btn-default btn-block"
   end
 
   def current_user_involved?(dealing)

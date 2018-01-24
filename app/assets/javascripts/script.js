@@ -3,6 +3,7 @@ $( document ).on('turbolinks:load',function() {
     loadGlobalTransactions();
     loadContacts();
     loadPersonalTransactions();
+    loadDetailedTransactions();
     createComment();
 });
 
@@ -42,6 +43,18 @@ function loadPersonalTransactions() {
         $('.list-group').html(currentUserTransactionsListHtml);
       }
     })
+  })
+}
+
+// function loadDetailedTransactions() {
+//   $(".details-button").on('click', function() {
+//     alert('you clicked on a detail!');
+//   });
+// }
+
+function loadDetailedTransactions() {
+  $(".list-group").on('click', '.details-button', function() {
+    alert('you clicked on a detail!');
   })
 }
 
