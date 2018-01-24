@@ -79,6 +79,11 @@ class DealingsController < ApplicationController
   def show
     @dealing = Dealing.find(params[:id])
     @comments = @dealing.comments
+    respond_to do |format|
+      format.html { render :show }
+      # format.json { render json: @dealings.to_json({:include => [:sender, :recipient]})}
+      format.json { render json: @dealing }
+    end
   end
 
   def destroy

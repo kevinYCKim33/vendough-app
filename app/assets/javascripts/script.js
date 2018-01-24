@@ -54,7 +54,13 @@ function loadPersonalTransactions() {
 
 function loadDetailedTransactions() {
   $(".list-group").on('click', '.details-button', function() {
-    alert('you clicked on a detail!');
+    let transactionId = this.href.split("/").slice().pop();
+    alert(`you clicked on tranasction #${transactionId}!`);
+    event.preventDefault();
+    debugger;
+    $.get('/dealings/' + transactionId + '.json', function(resp) {
+      debugger;
+    })
   })
 }
 
