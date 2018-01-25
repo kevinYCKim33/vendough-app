@@ -90,7 +90,7 @@ function createComment() {
       const newCommentHtml = HandlebarsTemplates['new_comment']({
         comment: data
       });
-      $(newCommentHtml).insertBefore('.list-group-item:last')
+      $(newCommentHtml).insertAfter('.list-group-item:last')
 
     })
   })
