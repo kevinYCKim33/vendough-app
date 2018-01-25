@@ -66,20 +66,6 @@ function loadDetailedTransaction() {
   })
 }
 
-function createComment() {
-  $('form#new_comment').submit(function(event) {
-    event.preventDefault();
-    let values = $(this).serialize();
-    let posting = $.post('/comments', values);
-    posting.done(function(data) {
-      debugger;
-      const newCommentHtml = HandlebarsTemplates['new_comment']({
-        comment: data
-      });
-      $(newCommentHtml).insertBefore('.list-group-item:last')
-    })
-  })
-}
 
 function hideComments() {
   $('.list-group').on('click', '.hide-comments', function() {
@@ -95,4 +81,17 @@ function hideComments() {
   })
 }
 
-//change change change
+function createComment() {
+  $('form#new_comment').submit(function(event) {
+    event.preventDefault();
+    let values = $(this).serialize();
+    let posting = $.post('/comments', values);
+    posting.done(function(data) {
+      const newCommentHtml = HandlebarsTemplates['new_comment']({
+        comment: data
+      });
+      $(newCommentHtml).insertBefore('.list-group-item:last')
+
+    })
+  })
+}

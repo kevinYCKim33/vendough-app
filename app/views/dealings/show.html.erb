@@ -10,17 +10,18 @@
         <%= display_link_tags(@dealing.tags) %>
     </div>
 
-    <% if !@dealing.comments.empty? %>
-      <%= render partial: 'dealing_comments', collection: @comments, as: :comment %>
-    <% end %>
-
     <div class="list-group-item">
       <%= form_for @dealing.comments.build do |f| %>
-        <%= f.hidden_field :dealing_id %>
-        <%= f.text_field :content, placeholder: "Comment" %>
-        <%= f.submit "Send", class: "btn btn-sm btn-primary" %>
+      <%= f.hidden_field :dealing_id %>
+      <%= f.text_field :content, placeholder: "Comment" %>
+      <%= f.submit "Send", class: "btn btn-sm btn-primary" %>
       <% end %>
     </div>
+
+    <% if !@dealing.comments.empty? %>
+      <%= render partial: 'dealing_comments', collection: @dealing.comments[0...-1], as: :comment %>
+    <% end %>
+
   </div>
 
 </div>
