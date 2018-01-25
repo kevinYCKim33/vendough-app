@@ -72,6 +72,7 @@ function createComment() {
     let values = $(this).serialize();
     let posting = $.post('/comments', values);
     posting.done(function(data) {
+      debugger;
       const newCommentHtml = HandlebarsTemplates['new_comment']({
         comment: data
       });
