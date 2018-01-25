@@ -122,7 +122,19 @@
 
  .list-group {
    max-width: 400px;
+
  }
+
+ /* all panels  */
+  div > .list-group-item {
+
+  }
+
+/* when users click view details  */
+ div > .list-group-item.selected {
+   background-color: #f9f9f9;
+ }
+
 
  .page-header, #login {
    background-color: rgb(061,149,206);

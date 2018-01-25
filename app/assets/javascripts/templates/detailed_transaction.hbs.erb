@@ -1,5 +1,5 @@
 {{#transaction}}
-  <div class="list-group-item" id={{id}}>
+  <div class="list-group-item selected" id={{id}}>
     <b><a href="/users/{{sender.id}}">{{sender.name}}</a>
     </b> {{charged_or_paid}} <b>
     <a href="/users/{{recipient.id}}">{{recipient.name}}</a></b>
@@ -15,14 +15,14 @@
     </small>
   </div>
 
-  <div id={{id}} class="list-group-item comment">
+  <div id={{id}} class="list-group-item comment selected">
     <a href="#" data-id={{id}} class="hide-comments" style="color: #a8a8a8">Hide</a>
     &emsp;
     <a href="/dealings/{{id}}" style="color: #a8a8a8">Comment</a>
   </div>
 
   {{#each comments}}
-    <div id={{../id}} class="list-group-item comment">
+    <div id={{../id}} class="list-group-item comment selected">
       <font size="-1.2"><a href="/users/{{user_id}}">{{commenter}}</a> {{content}}</font>
       <br>
       <small style="color:#a8a8a8">
