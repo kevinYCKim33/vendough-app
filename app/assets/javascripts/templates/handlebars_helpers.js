@@ -67,7 +67,3 @@ Handlebars.registerHelper('green_or_red', function() {
     }
   }
 })
-
-Handlebars.registerHelper('commenter', function() {
-
-})
