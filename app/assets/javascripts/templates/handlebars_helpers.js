@@ -55,6 +55,8 @@ Handlebars.registerHelper('show_amount', function() {
   }
 })
 
+
+
 Handlebars.registerHelper('green_or_red', function() {
   let currentUserId = parseInt($('body').attr('data-userid'));
   if (this.sender.id === currentUserId || this.recipient.id === currentUserId) {
@@ -64,4 +66,8 @@ Handlebars.registerHelper('green_or_red', function() {
       return new Handlebars.SafeString("red")
     }
   }
+})
+
+Handlebars.registerHelper('commenter', function() {
+
 })
