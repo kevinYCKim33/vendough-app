@@ -16,6 +16,11 @@
   <% end %>
 
     <center>
+      <h4><%= current_user.name %></h4>
+      <h5>
+        <%= "#{display_credit} in Vendough" %>
+        <%= link_to "Add to Fund", add_fund_path, {style: "display: inline", type: "button", class: "btn btn-secondary btn-sm"} %>
+      </h5>
       <h4>Pay or Request</h4>
         <%= form_for @dealing, url: create_dealing_path, method: :post do |f| %>
           <div class="field" >

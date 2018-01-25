@@ -59,21 +59,44 @@
     color: black;
   }
 
+  #new_dealing > div > div > label:hover {
+    background-color: rgb(170,170,170);
+    border-color: rgb(170,170,170);
+    color: black;
+  }
+
   #new_dealing > div > div > label.active {
     background-color: rgb(061,149,206);
-    border-color: black;
+    border-color: rgb(061,149,206);
     color: white;
   }
 
+
+/* submit button on pay/request */
   #new_dealing > div.action > input {
-    background-color: rgb(061,149,206);
+    background-color: rgb(237,237,237);
     border-color: rgb(203,203,203);
+    color: black;
   }
 
-  #new_dealing > div.action > input.hover {
-    background-color: blue;
-    border-color: blue;
+  #new_dealing > div.action > input:hover {
+    background-color: rgb(061,149,206);
+    border-color: rgb(061,149,206);
+    color: white;
   }
+
+  /* add to fund button on pay or request page  */
+   #new > center > h5 > a {
+     border-color: gray;
+     background-color: white;
+     color: gray;
+   }
+
+   #new > center > h5 > a:hover {
+     border-color: white;
+     background-color: gray;
+     color: white;
+   }
 
 .page-header h2 {
    margin-top: 0;
