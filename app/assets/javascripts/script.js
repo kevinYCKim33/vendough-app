@@ -3,8 +3,9 @@ $( document ).on('turbolinks:load',function() {
     loadGlobalTransactions();
     loadContacts();
     loadPersonalTransactions();
-    loadDetailedTransactions();
+    loadDetailedTransaction();
     createComment();
+    hideComments();
 });
 
 function loadGlobalTransactions() {
@@ -52,14 +53,15 @@ function loadPersonalTransactions() {
 //   });
 // }
 
-function loadDetailedTransactions() {
+function loadDetailedTransaction() {
   $(".list-group").on('click', '.details-button', function() {
     let transactionId = this.href.split("/").slice().pop();
-    alert(`you clicked on tranasction #${transactionId}!`);
     event.preventDefault();
-    debugger;
     $.get('/dealings/' + transactionId + '.json', function(resp) {
-      debugger;
+      let detailedTransactionHtml = HandlebarsTemplates['detailed_transaction']({
+        transaction: resp
+      });
+      $(`#${transactionId}.list-group-item`).replaceWith(detailedTransactionHtml);
     })
   })
 }
@@ -74,6 +76,20 @@ function createComment() {
         comment: data
       });
       $(newCommentHtml).insertBefore('.list-group-item:last')
+    })
+  })
+}
+
+function hideComments() {
+  $('.list-group').on('click', '.hide-comments', function() {
+    event.preventDefault();
+    let transactionId = this.dataset.id;
+    $.get('/dealings/' + transactionId + '.json', function(resp) {
+      let transactionHtml = HandlebarsTemplates['single_transaction']({
+        transaction: resp
+      });
+      $(`#${transactionId}.comment`).remove();
+      $(`#${transactionId}.list-group-item`).replaceWith(transactionHtml);
     })
   })
 }

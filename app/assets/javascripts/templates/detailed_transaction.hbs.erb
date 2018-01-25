@@ -1,0 +1,37 @@
+{{#transaction}}
+  <div class="list-group-item" id={{id}}>
+    <b><a href="/users/{{sender.id}}">{{sender.name}}</a>
+    </b> {{charged_or_paid}} <b>
+    <a href="/users/{{recipient.id}}">{{recipient.name}}</a></b>
+    <br>
+    <small style="color: #a8a8a8">{{exact_date}}</small>
+    <br>
+    {{description}}
+    <br>
+    <small style="color: #a8a8a8">
+      {{#each tags}}
+      <a href="/tags/{{id}}">{{this.name}}</a>
+      {{/each}}
+    </small>
+  </div>
+
+  <div id={{id}} class="list-group-item comment">
+    <a href="#" data-id={{id}} class="hide-comments" style="color: #a8a8a8">Hide</a>
+    &emsp;
+    <a href="/dealings/{{id}}" style="color: #a8a8a8">Comment</a>
+  </div>
+
+  <div id={{id}} class="list-group-item comment">
+    <font size="-1.2"><a href="/users/1">Kevin Kim</a>: FIRST!</font>
+    <br>
+    <small style="color:#a8a8a8">
+      <time datetime="2018-01-25T00:06:56Z" data-local="time" data-format="%b %d, %Y %I:%M %p" title="January 24, 2018 at 4:06pm PST" data-localized="">Jan 24, 2018 04:06 PM</time>
+    </small>
+  </div>
+
+  <div id={{id}} class="list-group-item comment">
+    <font size="-1.2"><a href="/users/1">Kevin Kim</a>: SECONDS!!</font>
+    <br>
+    <small style="color:#a8a8a8"><time datetime="2018-01-25T00:07:40Z" data-local="time" data-format="%b %d, %Y %I:%M %p" title="January 24, 2018 at 4:07pm PST" data-localized="">Jan 24, 2018 04:07 PM</time> </small>
+  </div>
+{{/transaction}}

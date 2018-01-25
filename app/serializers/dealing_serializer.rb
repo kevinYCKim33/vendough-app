@@ -3,4 +3,5 @@ class DealingSerializer < ActiveModel::Serializer
   belongs_to :sender, serializer: ParticipantsInfoSerializer
   belongs_to :recipient, serializer: ParticipantsInfoSerializer
   has_many :comments
+  has_many :tags
 end
