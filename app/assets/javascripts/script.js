@@ -91,7 +91,9 @@ function createComment() {
         comment: data
       });
       $(newCommentHtml).insertAfter('.list-group-item:last')
-
+      // const newCommentForm = HandlebarsTemplates['comment_form']({
+      //   $('.list-group-item')[1].replaceWith(newCommentForm)
+      // })
     })
   })
 }

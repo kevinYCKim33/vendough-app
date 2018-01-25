@@ -22,6 +22,7 @@
   </div>
 
   {{#each comments}}
+    <%= binding.pry %>
     <div id={{../id}} class="list-group-item comment">
       <font size="-1.2"><a href="/users/{{user_id}}">{{commenter}}</a> {{content}}</font>
       <br>

@@ -1,5 +1,5 @@
 <div class="container" id="show">
-  <div class="list-group">
+  <div class="list-group" data-id=<%=@dealing.id%>>
     <div class="list-group-item" >
         <b><%= link_to @dealing.sender_name, @dealing.sender %></b> <%= charged_or_paid(@dealing) %>  <b><%= link_to @dealing.recipient_name, @dealing.recipient%></b>
         <br>
@@ -11,10 +11,10 @@
     </div>
 
     <div class="list-group-item">
-      <%= form_for @dealing.comments.build do |f| %>
-      <%= f.hidden_field :dealing_id %>
-      <%= f.text_field :content, placeholder: "Comment" %>
-      <%= f.submit "Send", class: "btn btn-sm btn-primary" %>
+      <%= form_for @comments.build do |f| %>
+        <%= f.hidden_field :dealing_id %>
+        <%= f.text_field :content, placeholder: "Comment" %>
+        <%= f.submit "Send", class: "btn btn-sm btn-primary" %>
       <% end %>
     </div>
 
