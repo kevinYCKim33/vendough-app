@@ -31,6 +31,7 @@ class UsersController < ApplicationController
       @user.save
       flash[:message] = "Successfully transferred from your fictitious account."
       redirect_to user_dealings_path(@user)
+      # redirect_back(fallback_location: root_path)
     else
       flash[:message] = "Please add an amount > $0"
       redirect_back(fallback_location: root_path)
