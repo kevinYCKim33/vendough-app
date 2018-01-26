@@ -2,8 +2,8 @@ function Transaction(data) {
   this.data = data;
 }
 
-Transaction.prototype.createTransactionPanels = function(templateName) {
-  return HandlebarsTemplates[templateName]({
+Transaction.prototype.createTransactionPanels = function() {
+  return HandlebarsTemplates['transactions_list']({
     transactions: this.data
   });
 }

@@ -11,7 +11,7 @@ $( document ).on('turbolinks:load',function() {
 function loadGlobalTransactions() {
   $("#globe").on('click', function() {
     $.get("/dealings" + ".json", function(resp) {
-      const globalTransactions = new Transaction(resp).createTransactionPanels('transactions_list');
+      const globalTransactions = new Transaction(resp).createTransactionPanels();
       $('.list-group').html(globalTransactions);
     });
   });
@@ -22,25 +22,12 @@ function loadPersonalTransactions() {
   $("#you").on('click', function() {
     $.get("/users/" + currentUserId + "/dealings" + ".json", function(resp){
       if (resp.length > 0) {
-        const currentUserTransactions =new Transaction(resp).createTransactionPanels('transactions_list');
+        const currentUserTransactions =new Transaction(resp).createTransactionPanels();
         $('.list-group').html(currentUserTransactions);
       } else {
         const displayEmptyTransactionMessage = "<br><br><center><p><b>When you complete a transaction it will show up here.</b></p></center>"
         $('.list-group').html(displayEmptyTransactionMessage);
       }
-    })
-  })
-}
-
-function loadDetailedTransaction() {
-  $(".list-group").on('click', '.details-button', function() {
-    let transactionId = this.href.split("/").slice().pop();
-    event.preventDefault();
-    $.get('/dealings/' + transactionId + '.json', function(resp) {
-      let detailedTransactionHtml = HandlebarsTemplates['detailed_transaction']({
-        transaction: resp
-      });
-      $(`#${transactionId}.list-group-item`).replaceWith(detailedTransactionHtml);
     })
   })
 }
@@ -58,7 +45,18 @@ function loadContacts() {
 
 
 
-
+function loadDetailedTransaction() {
+  $(".list-group").on('click', '.details-button', function() {
+    let transactionId = this.href.split("/").slice().pop();
+    event.preventDefault();
+    $.get('/dealings/' + transactionId + '.json', function(resp) {
+      let detailedTransactionHtml = HandlebarsTemplates['detailed_transaction']({
+        transaction: resp
+      });
+      $(`#${transactionId}.list-group-item`).replaceWith(detailedTransactionHtml);
+    })
+  })
+}
 
 function hideComments() {
   $('.list-group').on('click', '.hide-comments', function() {
