@@ -66,6 +66,17 @@ function loadDetailedTransaction() {
   })
 }
 
+function Comment(data) {
+  this.data = data;
+}
+
+Comment.prototype.template = function() {
+  const newCommentHtml = HandlebarsTemplates['new_comment']({
+    comment: data
+  });
+  return newCommentHtml;
+}
+
 
 function hideComments() {
   $('.list-group').on('click', '.hide-comments', function() {
@@ -90,10 +101,8 @@ function createComment() {
       const newCommentHtml = HandlebarsTemplates['new_comment']({
         comment: data
       });
-      $(newCommentHtml).insertAfter('.list-group-item:last')
-      // const newCommentForm = HandlebarsTemplates['comment_form']({
-      //   $('.list-group-item')[1].replaceWith(newCommentForm)
-      // })
+      $(newCommentHtml).insertAfter('.list-group-item:last');
+      $('.new_comment input[type="submit"]').removeAttr('disabled');
     })
   })
 }
