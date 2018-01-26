@@ -46,17 +46,11 @@ function loadDetailedTransaction() {
 function loadContacts() {
   $("#associates").on('click', function() {
     $.get("/contacts" + ".json", function(resp) {
-      const contactsListHtml = HandlebarsTemplates['contacts_list']({
-        contacts: resp
-      });
-      $('.list-group').html(contactsListHtml);
+      const contactsList = new Contact(resp).createContactsPanels();
+      $('.list-group').html(contactsList);
     });
   });
 }
-
-
-
-
 
 function hideComments() {
   $('.list-group').on('click', '.hide-comments', function() {
