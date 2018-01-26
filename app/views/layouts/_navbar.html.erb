@@ -23,6 +23,7 @@
         </ul>
         <!-- social bar nav links -->
         <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "#{current_user.name}", user_dealings_path(current_user) %></li>
           <li><%= link_to("Log out", destroy_user_session_path, :method => "delete") %></li>
         </ul>
       </div><!-- /.navbar-collapse -->
