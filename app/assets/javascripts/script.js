@@ -11,12 +11,26 @@ $( document ).on('turbolinks:load',function() {
 function loadGlobalTransactions() {
   $("#globe").on('click', function() {
     $.get("/dealings" + ".json", function(resp) {
-      const transactions = new Transaction(resp);
-      const filledOutTransactions = transactions.globalTemplate()
-      $('.list-group').html(filledOutTransactions);
+      const globalTransactions = new Transaction(resp).createTransactionPanels();
+      $('.list-group').html(globalTransactions);
     });
   });
 };
+
+function loadPersonalTransactions() {
+  let currentUserId = parseInt($('body').attr('data-userid'));
+  $("#you").on('click', function() {
+    $.get("/users/" + currentUserId + "/dealings" + ".json", function(resp){
+      if (resp.length > 0) {
+        const currentUserTransactions =new Transaction(resp).createTransactionPanels();
+        $('.list-group').html(currentUserTransactions);
+      } else {
+        const displayEmptyTransactionMessage = "<br><br><center><p><b>When you complete a transaction it will show up here.</b></p></center>"
+        $('.list-group').html(displayEmptyTransactionMessage);
+      }
+    })
+  })
+}
 
 function loadContacts() {
   $("#associates").on('click', function() {
@@ -29,22 +43,7 @@ function loadContacts() {
   });
 }
 
-function loadPersonalTransactions() {
-  let currentUserId = parseInt($('body').attr('data-userid'));
-  $("#you").on('click', function() {
-    $.get("/users/" + currentUserId + "/dealings" + ".json", function(resp){
-      if (resp.length > 0) {
-        const currentUserTransactionsListHtml = HandlebarsTemplates['transactions_list']({
-          transactions: resp
-        });
-        $('.list-group').html(currentUserTransactionsListHtml);
-      } else {
-        const currentUserTransactionsListHtml = "<br><br><center><p><b>When you complete a transaction it will show up here.</b></p></center>"
-        $('.list-group').html(currentUserTransactionsListHtml);
-      }
-    })
-  })
-}
+
 
 function loadDetailedTransaction() {
   $(".list-group").on('click', '.details-button', function() {
