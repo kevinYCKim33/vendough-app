@@ -32,6 +32,17 @@ function loadPersonalTransactions() {
   })
 }
 
+function loadDetailedTransaction() {
+  $(".list-group").on('click', '.details-button', function() {
+    let transactionId = this.href.split("/").slice().pop();
+    event.preventDefault();
+    $.get('/dealings/' + transactionId + '.json', function(resp) {
+      const detailedTransaction = new Transaction(resp).createDetailedTransactionPanel();
+      $(`#${transactionId}.list-group-item`).replaceWith(detailedTransaction);
+    })
+  })
+}
+
 function loadContacts() {
   $("#associates").on('click', function() {
     $.get("/contacts" + ".json", function(resp) {
@@ -45,18 +56,7 @@ function loadContacts() {
 
 
 
-function loadDetailedTransaction() {
-  $(".list-group").on('click', '.details-button', function() {
-    let transactionId = this.href.split("/").slice().pop();
-    event.preventDefault();
-    $.get('/dealings/' + transactionId + '.json', function(resp) {
-      let detailedTransactionHtml = HandlebarsTemplates['detailed_transaction']({
-        transaction: resp
-      });
-      $(`#${transactionId}.list-group-item`).replaceWith(detailedTransactionHtml);
-    })
-  })
-}
+
 
 function hideComments() {
   $('.list-group').on('click', '.hide-comments', function() {

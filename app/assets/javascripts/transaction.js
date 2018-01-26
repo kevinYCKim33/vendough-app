@@ -7,3 +7,9 @@ Transaction.prototype.createTransactionPanels = function() {
     transactions: this.data
   });
 }
+
+Transaction.prototype.createDetailedTransactionPanel = function() {
+  return HandlebarsTemplates['detailed_transaction']({
+    transaction: this.data
+  });
+}
