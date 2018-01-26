@@ -64,28 +64,14 @@ function loadContacts() {
   });
 }
 
-
-
-function Comment(data) {
-  this.data = data;
-}
-
-Comment.prototype.template = function() {
-  const newCommentHtml = HandlebarsTemplates['new_comment']({
-    comment: this.data
-  });
-  return newCommentHtml;
-}
-
 function createComment() {
   $('form#new_comment').submit(function(event) {
     event.preventDefault();
     let values = $(this).serialize();
     let posting = $.post('/comments', values);
-    posting.done(function(data) {
-      const comment = new Comment(data);
-      const filledOutComment = comment.template();
-      $(filledOutComment).insertAfter('.list-group-item:last');
+    posting.done(function(resp) {
+      const newComment = new Comment(resp).createNewComment();
+      $(newComment).insertAfter('.list-group-item:last');
       $('.new_comment input[type="submit"]').removeAttr('disabled');
       $('#comment_content').val("");
     })
