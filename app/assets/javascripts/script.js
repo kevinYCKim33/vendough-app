@@ -72,7 +72,7 @@ function Comment(data) {
 
 Comment.prototype.template = function() {
   const newCommentHtml = HandlebarsTemplates['new_comment']({
-    comment: data
+    comment: this.data
   });
   return newCommentHtml;
 }
@@ -98,10 +98,9 @@ function createComment() {
     let values = $(this).serialize();
     let posting = $.post('/comments', values);
     posting.done(function(data) {
-      const newCommentHtml = HandlebarsTemplates['new_comment']({
-        comment: data
-      });
-      $(newCommentHtml).insertAfter('.list-group-item:last');
+      const comment = new Comment(data);
+      const filledOutComment = comment.template();
+      $(filledOutComment).insertAfter('.list-group-item:last');
       $('.new_comment input[type="submit"]').removeAttr('disabled');
     })
   })
