@@ -23,11 +23,8 @@
         transactions yet</b></p>
       <% end %>
     <% end %>
-
-
-
   </center>
-  <%= content_tag :div, class: "list-group" do %>
-    <%= render partial: '/dealings/dealing_details', collection: @dealings, as: :dealing%>
-  <% end %>
+    <%= content_tag :div, class: "list-group" do %>
+      <%= render partial: '/dealings/dealing_details', collection: @dealings, as: :dealing%>
+    <% end %>
 </div>
