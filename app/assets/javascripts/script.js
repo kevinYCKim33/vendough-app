@@ -47,12 +47,6 @@ function loadPersonalTransactions() {
   })
 }
 
-// function loadDetailedTransactions() {
-//   $(".details-button").on('click', function() {
-//     alert('you clicked on a detail!');
-//   });
-// }
-
 function loadDetailedTransaction() {
   $(".list-group").on('click', '.details-button', function() {
     let transactionId = this.href.split("/").slice().pop();
@@ -65,18 +59,6 @@ function loadDetailedTransaction() {
     })
   })
 }
-
-function Comment(data) {
-  this.data = data;
-}
-
-Comment.prototype.template = function() {
-  const newCommentHtml = HandlebarsTemplates['new_comment']({
-    comment: this.data
-  });
-  return newCommentHtml;
-}
-
 
 function hideComments() {
   $('.list-group').on('click', '.hide-comments', function() {
@@ -92,6 +74,17 @@ function hideComments() {
   })
 }
 
+function Comment(data) {
+  this.data = data;
+}
+
+Comment.prototype.template = function() {
+  const newCommentHtml = HandlebarsTemplates['new_comment']({
+    comment: this.data
+  });
+  return newCommentHtml;
+}
+
 function createComment() {
   $('form#new_comment').submit(function(event) {
     event.preventDefault();
@@ -102,6 +95,7 @@ function createComment() {
       const filledOutComment = comment.template();
       $(filledOutComment).insertAfter('.list-group-item:last');
       $('.new_comment input[type="submit"]').removeAttr('disabled');
+      $('#comment_content').val("");
     })
   })
 }
