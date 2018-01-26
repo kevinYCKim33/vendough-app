@@ -43,6 +43,18 @@ function loadDetailedTransaction() {
   })
 }
 
+function hideComments() {
+  $('.list-group').on('click', '.hide-comments', function() {
+    event.preventDefault();
+    let transactionId = this.dataset.id;
+    $.get('/dealings/' + transactionId + '.json', function(resp) {
+      const simplePanel = new Transaction(resp).revertToSimpleTransactionPanel();
+      $(`#${transactionId}.comment`).remove();
+      $(`#${transactionId}.list-group-item`).replaceWith(simplePanel);
+    })
+  })
+}
+
 function loadContacts() {
   $("#associates").on('click', function() {
     $.get("/contacts" + ".json", function(resp) {
@@ -52,19 +64,7 @@ function loadContacts() {
   });
 }
 
-function hideComments() {
-  $('.list-group').on('click', '.hide-comments', function() {
-    event.preventDefault();
-    let transactionId = this.dataset.id;
-    $.get('/dealings/' + transactionId + '.json', function(resp) {
-      let transactionHtml = HandlebarsTemplates['single_transaction']({
-        transaction: resp
-      });
-      $(`#${transactionId}.comment`).remove();
-      $(`#${transactionId}.list-group-item`).replaceWith(transactionHtml);
-    })
-  })
-}
+
 
 function Comment(data) {
   this.data = data;

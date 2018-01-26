@@ -13,3 +13,9 @@ Transaction.prototype.createDetailedTransactionPanel = function() {
     transaction: this.data
   });
 }
+
+Transaction.prototype.revertToSimpleTransactionPanel = function() {
+  return HandlebarsTemplates['single_transaction']({
+    transaction: this.data
+  });
+}
