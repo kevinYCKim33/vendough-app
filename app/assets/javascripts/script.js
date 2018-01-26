@@ -79,6 +79,10 @@ function Comment(data) {
 }
 
 Comment.prototype.template = function() {
+  
+}
+
+Comment.prototype.template = function() {
   const newCommentHtml = HandlebarsTemplates['new_comment']({
     comment: this.data
   });
