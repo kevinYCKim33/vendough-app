@@ -1,7 +1,7 @@
 $( document ).on('turbolinks:load',function() {
   // turbolinks is a rails 5 fix
-    loadGlobalTransactions();
     loadContacts();
+    loadGlobalTransactions();
     loadPersonalTransactions();
     loadDetailedTransaction();
     createComment();
@@ -11,10 +11,9 @@ $( document ).on('turbolinks:load',function() {
 function loadGlobalTransactions() {
   $("#globe").on('click', function() {
     $.get("/dealings" + ".json", function(resp) {
-      const transactionsListHtml = HandlebarsTemplates['transactions_list']({
-        transactions: resp
-      });
-      $('.list-group').html(transactionsListHtml);
+      const transactions = new Transaction(resp);
+      const filledOutTransactions = transactions.globalTemplate()
+      $('.list-group').html(filledOutTransactions);
     });
   });
 };
@@ -76,10 +75,6 @@ function hideComments() {
 
 function Comment(data) {
   this.data = data;
-}
-
-Comment.prototype.template = function() {
-  
 }
 
 Comment.prototype.template = function() {
