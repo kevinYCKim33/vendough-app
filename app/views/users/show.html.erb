@@ -14,11 +14,6 @@
         <button type="button" class="btn btn-default" id="associates"><span class="glyphicon glyphicon-user"><span class="glyphicon glyphicon-user"></button>
         <button type="button" class="btn btn-default" id="you"><span class="glyphicon glyphicon-user"></button>
       </div>
-      <% if @dealings.empty? %>
-        <br>
-        <p><b>When you complete a transaction <br>
-        they will show up here</b></p>
-      <% end %>
     <% else %>
       <a href="/users/<%=@user.id%>/dealings/new" type="button" class="btn btn-primary btn-sm btn-block">Pay or Request</a>
       <br>
