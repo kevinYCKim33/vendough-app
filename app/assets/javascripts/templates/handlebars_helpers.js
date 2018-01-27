@@ -36,7 +36,7 @@ function toStandardTime(militaryTime) {
 }
 
 Handlebars.registerHelper('exact_date', function() {
-  const exactDate = this.created_at;
+  const exactDate = this.updated_at;
   const date = new Date(exactDate).toString().split(" ");
   const monthDayYear = date.slice(1,3).join(" ") + ", " + date[3];
   const time = date[4].split(":").slice(0,2).join(":");
