@@ -28,6 +28,8 @@ function toStandardTime(militaryTime) {
   if (hour > 12) {
     hour -= 12;
     extension = 'PM';
+  } else if (hour === 12) {
+    extension = 'PM';
   } else if (hour === 0) {
     hour = 12;
   }
@@ -36,6 +38,7 @@ function toStandardTime(militaryTime) {
 }
 
 Handlebars.registerHelper('exact_date', function() {
+  // debugger;
   const exactDate = this.updated_at;
   const date = new Date(exactDate).toString().split(" ");
   const monthDayYear = date.slice(1,3).join(" ") + ", " + date[3];

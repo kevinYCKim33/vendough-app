@@ -18,6 +18,7 @@ function loadGlobalTransactions() {
 };
 
 function loadPersonalTransactions() {
+  // debugger;
   let currentUserId = parseInt($('body').attr('data-userid'));
   $("#you").on('click', function() {
     $.get("/users/" + currentUserId + "/dealings" + ".json", function(resp){
@@ -37,6 +38,7 @@ function loadDetailedTransaction() {
     let transactionId = this.href.split("/").slice().pop();
     event.preventDefault();
     $.get('/dealings/' + transactionId + '.json', function(resp) {
+      // debugger;
       const detailedTransaction = new Transaction(resp).createDetailedTransactionPanel();
       $(`#${transactionId}.list-group-item`).replaceWith(detailedTransaction);
     })
