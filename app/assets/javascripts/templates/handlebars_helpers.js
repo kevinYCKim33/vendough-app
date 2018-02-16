@@ -53,8 +53,7 @@ Handlebars.registerHelper('show_amount', function() {
     if (this.sender.id === currentUserId && this.action === "request" || this.recipient.id === currentUserId && this.action === "pay") {
       return new Handlebars.SafeString("+ $" + Number(this.amount).toFixed(2))
     } else {
-      return '';
-      // return new Handlebars.SafeString("- $" + Number(this.amount).toFixed(2))
+      return new Handlebars.SafeString("- $" + Number(this.amount).toFixed(2))
     }
   }
 })
@@ -65,8 +64,7 @@ Handlebars.registerHelper('green_or_red', function() {
     if (this.sender.id === currentUserId && this.action === "request" || this.recipient.id === currentUserId && this.action == "pay") {
       return new Handlebars.SafeString("green")
     } else {
-      return '';
-      // return new Handlebars.SafeString("red")
+      return new Handlebars.SafeString("red")
     }
   }
 })
