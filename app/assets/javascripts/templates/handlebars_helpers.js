@@ -13,11 +13,11 @@ Handlebars.registerHelper('concise_date', function() {
 })
 
 function displayDoubleDigit(number){
-    if (number < 10) {
-        return '0' + number.toString();
-    }else{
-        return number.toString();
-    }
+  if (number < 10) {
+    return '0' + number.toString();
+  } else {
+    return number.toString();
+  }
 }
 
 function toStandardTime(militaryTime) {
@@ -53,7 +53,8 @@ Handlebars.registerHelper('show_amount', function() {
     if (this.sender.id === currentUserId && this.action === "request" || this.recipient.id === currentUserId && this.action === "pay") {
       return new Handlebars.SafeString("+ $" + Number(this.amount).toFixed(2))
     } else {
-      return new Handlebars.SafeString("- $" + Number(this.amount).toFixed(2))
+      return '';
+      // return new Handlebars.SafeString("- $" + Number(this.amount).toFixed(2))
     }
   }
 })
@@ -64,7 +65,8 @@ Handlebars.registerHelper('green_or_red', function() {
     if (this.sender.id === currentUserId && this.action === "request" || this.recipient.id === currentUserId && this.action == "pay") {
       return new Handlebars.SafeString("green")
     } else {
-      return new Handlebars.SafeString("red")
+      return '';
+      // return new Handlebars.SafeString("red")
     }
   }
 })

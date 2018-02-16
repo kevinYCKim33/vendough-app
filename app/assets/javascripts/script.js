@@ -23,7 +23,7 @@ function loadPersonalTransactions() {
   $("#you").on('click', function() {
     $.get("/users/" + currentUserId + "/dealings" + ".json", function(resp){
       if (resp.length > 0) {
-        const currentUserTransactions =new Transaction(resp).createTransactionPanels();
+        const currentUserTransactions = new Transaction(resp).createTransactionPanels();
         $('.list-group').html(currentUserTransactions);
       } else {
         const displayEmptyTransactionMessage = "<br><br><center><p><b>When you complete a transaction it will show up here.</b></p></center>"
