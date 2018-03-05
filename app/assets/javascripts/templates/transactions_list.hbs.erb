@@ -1,24 +1,44 @@
 {{#transactions}}
 <div class="list-group-item" id={{id}}>
+  <div class="froggy">
+    <div class="sender-pic">
+      hey there
+    </div>
+    <br />
+    <div class="info">
+      <div class="name-and-time">
+        <div class="names">
+          <b><a href="/users/{{sender.id}}/dealings">{{sender.name}}</a> </b>
+          {{charged_or_paid}}
+          <b><a href="/users/{{recipient.id}}/dealings">{{recipient.name}}</a></b>
+        </div>
 
-  <p><b><a href="/users/{{sender.id}}/dealings">{{sender.name}}</a>
-  </b>{{charged_or_paid}}<b>
+        <div class="date">
+          {{concise_date}} <span class="glyphicon glyphicon-globe"></span>
+        </div>
+      </div>
 
-    <a href="/users/{{recipient.id}}/dealings">{{recipient.name}}</a></b></p>
+      <div class="description">
+        {{description}}
+      </div>
 
-  <div style="position: absolute; top: 10px; right: 15px; width: 90px; text-align:right;">
-    {{concise_date}} <span class="glyphicon glyphicon-globe"></span>
-</div>
-  <b><div style="color: {{green_or_red}}; position: absolute; bottom: 48px; right: 15px; width: 150px; text-align:right;">{{show_amount}}</div></b>
+      <div class="likes">
+        <span class="glyphicon glyphicon-heart" style="color: rgb(061,149,206)"></span> &nbsp;Kevin Kim
+      </div>
 
-  <p> {{description}}</p>
+      <div class="like-comment-cost">
+        <div class="like-comment">
+          <a href="#">Like</a>
+          &emsp;
+          <a href="/dealings/{{id}}">Comment</a>
+        </div>
 
-  <div class="like-comment">
-    <a href="#">Like</a>
-    &emsp;
-    <a href="/dealings/{{id}}">Comment</a>
+        <div style="color: {{green_or_red}}">
+          <b>{{show_amount}}</b>
+        </div>
+      </div>
+    </div>
   </div>
-
 </div>
 
 {{/transactions}}
