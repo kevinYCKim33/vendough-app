@@ -16,6 +16,7 @@
 
 .sender-pic {
   padding-right: 10px;
+  padding-top: 5px;
 }
 
 .info {
@@ -67,7 +68,7 @@
 }
 
  .container, #feed, #request, #incomplete, #show, #hashtags {
-   max-width: 400px;
+   max-width: 450px;
  }
 
 /*remove bullets on errors.*/
