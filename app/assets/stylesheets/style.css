@@ -1,3 +1,13 @@
+/* like and comment links */
+.like-comment > a {
+  font-weight: bold;
+  color: gray;
+  text-decoration: none;
+}
+
+/* #\31 5 > div.like-comment > a:nth-child(1) */
+
+
 /*new comment send button */
 #new_comment > input.btn.btn-sm.btn-primary {
   border-color: gray;
