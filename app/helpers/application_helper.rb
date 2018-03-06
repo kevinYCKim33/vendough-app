@@ -1,13 +1,15 @@
 module ApplicationHelper
 
-  def user_pic
-    if active?(root_path)
+  def current_user_pic
+    if active?(root_path) || own_page?
       link_to add_fund_path do
         image_tag current_user.avatar_url, size: "90", class: "style_main_pic"
       end
-    else
-      image_tag current_user.avatar_url, size: "90", class: "style_main_pic"
     end
+  end
+
+  def other_user_pic(user)
+    image_tag user.avatar_url, size: "90", class: "style_main_pic"
   end
 
   def display_credit

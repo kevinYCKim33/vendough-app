@@ -1,7 +1,7 @@
 <div class="container" id="feed">
   <center>
     <h4><%= current_user.name %></h4>
-        <%= user_pic %>
+        <%= current_user_pic %>
     <h5>
       <%= "#{display_credit} in Vendough" %>
       <%= link_to "Add to Fund", add_fund_path, {style: "display: inline", type: "button", class: "btn btn-secondary btn-sm"} %>

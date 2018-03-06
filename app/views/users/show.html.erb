@@ -5,6 +5,7 @@
     <% end %>
     <h4><%= @user.name %></h4>
     <% if own_page? %>
+      <%= current_user_pic %>
       <h5>
         <%= "#{display_credit} in Vendough" %>
         <%= link_to "Add to Fund", add_fund_path, {style: "display: inline", type: "button", class: "btn btn-secondary btn-sm"} %>
@@ -15,6 +16,7 @@
         <button type="button" class="btn btn-default" autofocus="autofocus" id="you"><span class="glyphicon glyphicon-user"></button>
       </div>
     <% else %>
+      <%= other_user_pic(@user) %>
       <a href="/users/<%=@user.id%>/dealings/new" type="button" class="btn btn-primary btn-sm btn-block">Pay or Request</a>
       <br>
       <% if @dealings.empty? %>
