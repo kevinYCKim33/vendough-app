@@ -1,3 +1,7 @@
+.style_main_pic {
+  border-radius: 50%
+}
+
 /* like and comment links */
 .list-group {
   min-width: 450px;
