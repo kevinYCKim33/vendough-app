@@ -1,6 +1,21 @@
 .style_main_pic {
   border-radius: 50%
+  /* border: none; */
 }
+
+/* pay or request button fix later has super precedence for some reason */
+/* #feed > center > a {
+  background-color: rgb(061,149,206);
+  border-color: rgb(061,149,206);
+  width: 200px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
+} */
+
+/* #profile-link {
+  background-color: white;
+  border-color: white;
+  box-shadow: 0 0 0 0
+} */
 
 /* like and comment links */
 .list-group {
@@ -221,12 +236,7 @@
  }
 
 /*pay or request button for other users*/
- #feed > center > a {
-   background-color: rgb(061,149,206);
-   border-color: rgb(061,149,206);
-   width: 200px;
-   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
- }
+
 
  body > nav > div > div.navbar-header > a.navbar-brand.active {
    color: white;
