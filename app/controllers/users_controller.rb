@@ -38,6 +38,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_profile_pic
+    @user = current_user
+  end
+
+  def update_profile_pic
+    # binding.pry
+    @user = current_user
+    @user.avatar_url = pic_params[:avatar_url]
+    @user.save
+    redirect_to root_path
+  end
+
   def show
     @user = User.find_by(id: params[:id])
     @dealings = Dealing.user_dealings(@user)
@@ -58,6 +70,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:credit)
+  end
+
+  def pic_params
+    params.require(:patch).permit(:avatar_url)
   end
 
 end

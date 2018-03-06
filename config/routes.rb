@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 
   get '/contacts', to: 'users#index', as: 'contacts'
   get '/add_fund', to: 'users#edit', as: 'add_fund'
-
+  get '/change_profile_pic', to: 'users#change_profile_pic', as: 'change_profile_pic'
+  patch '/update_profile_pic', to: 'users#update_profile_pic', as: 'update_profile_pic'
   resources :tags, only: [:index, :show]
 
   root 'dealings#index'

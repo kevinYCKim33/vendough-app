@@ -1,0 +1,12 @@
+<center>
+<div id="update-pic" style="border: 1px solid black">
+  <h2> Change Profile Picture </h2>
+  <br />
+  <%=image_tag @user.avatar_url, size: "180", class: "style_main_pic"%>
+  <br />
+  <%= form_for @user, as: :patch, url: update_profile_pic_path do |f| %>
+    <%= f.text_field :avatar_url %>
+    <%= f.submit %>
+  <% end %>
+ </div>
+</center>
