@@ -1,3 +1,3 @@
 class ParticipantsInfoSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :avatar_url
 end
