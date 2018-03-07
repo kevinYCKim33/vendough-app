@@ -22,13 +22,14 @@
         {{description}}
       </div>
 
-      <div class="likes">
+      <div id={{id}} class="likes">
+        {{likes_list}}
         <span class="glyphicon glyphicon-heart" style="color: rgb(061,149,206)"></span> &nbsp;Kevin Kim
       </div>
 
       <div class="like-comment-cost">
         <div class="like-comment">
-          <a href="#">Like</a>
+          <a class="like-button" id={{id}} href="#">Like</a>
           &emsp;
           <a href="/dealings/{{id}}">Comment</a>
         </div>

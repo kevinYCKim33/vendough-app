@@ -1,3 +1,11 @@
+Handlebars.registerHelper('likes_list', function() {
+  // debugger;
+  let names = this.likes.map(person => {
+   	return (`<a href=users/${person.liker.id}/dealings>${person.liker.name}</a>`)
+  });
+  return new Handlebars.SafeString(names.join(", "));
+})
+
 Handlebars.registerHelper('charged_or_paid', function() {
   if(this.action === "request") {
     return new Handlebars.SafeString("charged")

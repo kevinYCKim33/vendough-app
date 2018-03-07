@@ -1,19 +1,29 @@
 $( document ).on('turbolinks:load',function() {
   // turbolinks is a rails 5 fix
-    loadContacts();
-    loadGlobalTransactions();
-    loadPersonalTransactions();
-    loadDetailedTransaction();
-    createComment();
-    hideComments();
+  if (top.location.pathname === '/')
+    {
+      loadContacts();
+      loadGlobalTransactionsOnClick();
+      loadPersonalTransactions();
+      loadDetailedTransaction();
+      createComment();
+      hideComments();
+      createLike();
+      $("#globe").click()
+    }
+
 });
 
 function loadGlobalTransactions() {
+  $.get("/dealings" + ".json", function(resp) {
+    const globalTransactions = new Transaction(resp).createTransactionPanels();
+    $('.list-group').html(globalTransactions);
+  });
+}
+
+function loadGlobalTransactionsOnClick() {
   $("#globe").on('click', function() {
-    $.get("/dealings" + ".json", function(resp) {
-      const globalTransactions = new Transaction(resp).createTransactionPanels();
-      $('.list-group').html(globalTransactions);
-    });
+    loadGlobalTransactions();
   });
 };
 
@@ -79,3 +89,17 @@ function createComment() {
     })
   })
 }
+
+function createLike() {
+  $('.list-group').on('click', '.like-button', function(event) {
+    event.preventDefault();
+    let id = this.id;
+    debugger;
+    let posting = $.post('/likes', {id});
+    posting.done(function(resp){
+      debugger;
+    })
+  })
+}
+
+// $("#16 .likes").html(resp.liked_users.map(person => person.name).join(", "))

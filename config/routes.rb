@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :likes, only: [:create, :destroy]
   get '/dealings/incomplete', to: 'dealings#incomplete', as: 'incomplete'
   get '/dealings/requests', to: 'dealings#requests', as: "pay_requests"
   # ^^ must be above dealing resource otherwise thinks it's a show
