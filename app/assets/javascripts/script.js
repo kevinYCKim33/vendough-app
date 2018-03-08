@@ -44,7 +44,6 @@ function loadDetailedTransaction() {
     let transactionId = this.href.split("/").slice().pop();
     event.preventDefault();
     $.get('/dealings/' + transactionId + '.json', function(resp) {
-      // debugger;
       const detailedTransaction = new Transaction(resp).createDetailedTransactionPanel();
       $(`#${transactionId}.list-group-item`).replaceWith(detailedTransaction);
     })
@@ -113,7 +112,7 @@ function unlike() {
         } else {
           let names = resp.liked_users.map(person => {
             return (`<a href=users/${person.id}/dealings>${person.name}</a>`)
-          });
+          })
           $("#" + resp.dealing_id + " .likes").html(`<span class="glyphicon glyphicon-heart" style="color:gray"></span> &nbsp;${names.join(", ")}`);
         }
         $("#" + resp.dealing_id + " .unlike-button").addClass('like-button').removeClass('.unlike-button').html('Like');

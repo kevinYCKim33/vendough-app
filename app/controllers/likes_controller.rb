@@ -1,8 +1,8 @@
 class LikesController < ApplicationController
   before_action :signed_in?
   before_action :find_dealing, only: [:create, :destroy]
+
   def create
-    # dealing = Dealing.find(dealing_id)
     like = Like.find_or_create_by(user: current_user, dealing: @dealing)
     like.save
     @dealing.likes << like
@@ -10,8 +10,6 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    # dealing = Dealing.find(dealing_id)
-    # binding.pry
     like = Like.find_by(user: current_user, dealing: @dealing)
     like.destroy
     display_likes
@@ -27,7 +25,6 @@ class LikesController < ApplicationController
   private
 
   def find_dealing
-    # binding.pry
     @dealing = Dealing.find(dealing_id)
   end
 
