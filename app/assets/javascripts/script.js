@@ -94,10 +94,12 @@ function createLike() {
   $('.list-group').on('click', '.like-button', function(event) {
     event.preventDefault();
     let id = this.id;
-    debugger;
     let posting = $.post('/likes', {id});
     posting.done(function(resp){
-      debugger;
+      let names = resp.liked_users.map(person => {
+        return (`<a href=users/${person.id}/dealings>${person.name}</a>`)
+      });
+      $("#" + resp.dealing_id + " .likes").html(`<span class="glyphicon glyphicon-heart" style="color:rgb(061,149,206)"></span> &nbsp;${names.join(", ")}`);
     })
   })
 }
