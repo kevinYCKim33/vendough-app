@@ -1,13 +1,19 @@
+//a lotta code just to get the current user's name to show up first on a like list
 Handlebars.registerHelper('likes_list', function() {
   if (this.likes.length > 0) {
-    let names = this.likes.map(person => {
+    let heartColor = 'gray'
+    let namesList = this.likes;
+    let currentUserId = parseInt($('body').attr('data-userid'));
+    let currentUserIndex = namesList.findIndex((person) => {
+      return person.user_id === currentUserId;
+    });
+    if (currentUserIndex > -1) {
+      heartColor = 'rgb(061,149,206)'
+      namesList.unshift(namesList.splice(currentUserIndex,1)[0]);
+    }
+    let names = namesList.map(person => {
      	return (`<a href=users/${person.liker.id}/dealings>${person.liker.name}</a>`)
     });
-    let currentUserId = parseInt($('body').attr('data-userid'));
-    let heartColor = 'gray'
-    if (this.likes.filter( like => like.user_id === currentUserId).length > 0) {
-      heartColor = 'rgb(061,149,206)'
-    }
     return new Handlebars.SafeString(`<span class="glyphicon glyphicon-heart" style="color:${heartColor}"></span> &nbsp;${names.join(", ")}`);
   }
 })
