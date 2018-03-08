@@ -3,7 +3,7 @@ $( document ).on('turbolinks:load',function() {
   if (top.location.pathname === '/')
     {
       loadContacts();
-      loadGlobalTransactionsOnClick();
+      loadGlobalTransactions();
       loadPersonalTransactions();
       loadDetailedTransaction();
       createComment();
@@ -15,15 +15,11 @@ $( document ).on('turbolinks:load',function() {
 });
 
 function loadGlobalTransactions() {
-  $.get("/dealings" + ".json", function(resp) {
-    const globalTransactions = new Transaction(resp).createTransactionPanels();
-    $('.list-group').html(globalTransactions);
-  });
-}
-
-function loadGlobalTransactionsOnClick() {
   $("#globe").on('click', function() {
-    loadGlobalTransactions();
+    $.get("/dealings" + ".json", function(resp) {
+      const globalTransactions = new Transaction(resp).createTransactionPanels();
+      $('.list-group').html(globalTransactions);
+    });
   });
 };
 
