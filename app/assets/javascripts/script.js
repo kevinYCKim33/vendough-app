@@ -24,7 +24,6 @@ function loadGlobalTransactions() {
 };
 
 function loadPersonalTransactions() {
-  // debugger;
   let currentUserId = parseInt($('body').attr('data-userid'));
   $("#you").on('click', function() {
     $.get("/users/" + currentUserId + "/dealings" + ".json", function(resp){
@@ -96,6 +95,10 @@ function createLike() {
         return (`<a href=users/${person.id}/dealings>${person.name}</a>`)
       });
       $("#" + resp.dealing_id + " .likes").html(`<span class="glyphicon glyphicon-heart" style="color:rgb(061,149,206)"></span> &nbsp;${names.join(", ")}`);
+      // debugger;
+      $("#" + resp.dealing_id + " .like-button").addClass('unlike-button').removeClass('like-button').html('Unlike');
     })
   })
 }
+
+// $("#11 .like-button").addClass('unlike-button').removeClass('like-button').html('Unlike')
