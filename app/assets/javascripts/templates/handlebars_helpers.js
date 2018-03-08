@@ -1,9 +1,15 @@
 Handlebars.registerHelper('likes_list', function() {
-  // debugger;
-  let names = this.likes.map(person => {
-   	return (`<a href=users/${person.liker.id}/dealings>${person.liker.name}</a>`)
-  });
-  return new Handlebars.SafeString(names.join(", "));
+  if (this.likes.length > 0) {
+    let names = this.likes.map(person => {
+     	return (`<a href=users/${person.liker.id}/dealings>${person.liker.name}</a>`)
+    });
+    let currentUserId = parseInt($('body').attr('data-userid'));
+    let heartColor = 'gray'
+    if (this.likes.filter( like => like.user_id === currentUserId).length > 0) {
+      heartColor = 'rgb(061,149,206)'
+    }
+    return new Handlebars.SafeString(`<span class="glyphicon glyphicon-heart" style="color:${heartColor}"></span> &nbsp;${names.join(", ")}`);
+  }
 })
 
 Handlebars.registerHelper('charged_or_paid', function() {

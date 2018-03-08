@@ -37,6 +37,17 @@
   text-decoration: none;
 }
 
+/* names listed when liking a transaction */
+.likes > a {
+  color: gray;
+  font-size: 12px;
+}
+
+/* heart sign */
+.likes > span {
+  font-size: 12px;
+}
+
 .froggy {
   display: flex;
   /* justify-content: space-between; */
