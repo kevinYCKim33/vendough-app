@@ -1,19 +1,20 @@
 class LikesController < ApplicationController
   before_action :signed_in?
-
+  before_action :find_dealing, only: [:create, :destroy]
   def create
-    dealing = Dealing.find(dealing_id)
-    like = Like.find_or_create_by(user: current_user, dealing: dealing)
+    # dealing = Dealing.find(dealing_id)
+    like = Like.find_or_create_by(user: current_user, dealing: @dealing)
     like.save
-    dealing.likes << like
-    users = dealing.likes.order("id DESC").map do |like|
-      user = User.find(like.user_id)
-      {name: user.name, id: user.id}
-    end
-    render json: {dealing_id: dealing.id, liked_users: users}
+    @dealing.likes << like
+    display_likes
   end
 
   def destroy
+    # dealing = Dealing.find(dealing_id)
+    # binding.pry
+    like = Like.find_by(user: current_user, dealing: @dealing)
+    like.destroy
+    display_likes
   end
 
   def signed_in?
@@ -24,6 +25,19 @@ class LikesController < ApplicationController
   end
 
   private
+
+  def find_dealing
+    # binding.pry
+    @dealing = Dealing.find(dealing_id)
+  end
+
+  def display_likes
+    users = @dealing.likes.order("id DESC").map do |like|
+      user = User.find(like.user_id)
+      {name: user.name, id: user.id}
+    end
+    render json: {dealing_id: @dealing.id, liked_users: users}
+  end
 
   def dealing_id
     params.require(:id)

@@ -9,6 +9,7 @@ $( document ).on('turbolinks:load',function() {
       createComment();
       hideComments();
       createLike();
+      unlike();
       $("#globe").click()
     }
 
@@ -95,10 +96,28 @@ function createLike() {
         return (`<a href=users/${person.id}/dealings>${person.name}</a>`)
       });
       $("#" + resp.dealing_id + " .likes").html(`<span class="glyphicon glyphicon-heart" style="color:rgb(061,149,206)"></span> &nbsp;${names.join(", ")}`);
-      // debugger;
       $("#" + resp.dealing_id + " .like-button").addClass('unlike-button').removeClass('like-button').html('Unlike');
     })
   })
 }
 
-// $("#11 .like-button").addClass('unlike-button').removeClass('like-button').html('Unlike')
+function unlike() {
+  $('.list-group').on('click', '.unlike-button', function(event) {
+    event.preventDefault();
+    $.ajax({
+      url: '/likes/' + this.id,
+      type: 'DELETE',
+      success: function(resp) {
+        if (resp.liked_users.length === 0) {
+          $("#" + resp.dealing_id + " .likes").html("");
+        } else {
+          let names = resp.liked_users.map(person => {
+            return (`<a href=users/${person.id}/dealings>${person.name}</a>`)
+          });
+          $("#" + resp.dealing_id + " .likes").html(`<span class="glyphicon glyphicon-heart" style="color:gray"></span> &nbsp;${names.join(", ")}`);
+        }
+        $("#" + resp.dealing_id + " .unlike-button").addClass('like-button').removeClass('.unlike-button').html('Like');
+      }
+    });
+  })
+}
