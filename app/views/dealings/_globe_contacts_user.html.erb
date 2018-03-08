@@ -1,0 +1,5 @@
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default"  <%=autofocus?(root_path)%> id="globe" title="See all transactions from the Vendough community"><span class="glyphicon glyphicon-globe"></button>
+  <button type="button" class="btn btn-default" id="associates" title="See other Vendough users to pay or request from"><span class="glyphicon glyphicon-user"><span class="glyphicon glyphicon-user"></button>
+  <button type="button" class="btn btn-default" <%=autofocus?("/users/#{current_user.id}/dealings")%> id="you" title="See transactions that only you're directly involved in"><span class="glyphicon glyphicon-user"></button>
+</div>
