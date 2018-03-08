@@ -3,7 +3,7 @@ module ApplicationHelper
   def current_user_pic
     if active?(root_path) || own_page?
       link_to change_profile_pic_path do
-        image_tag current_user.avatar_url, size: "90", class: "style_main_pic"
+        image_tag current_user.avatar_url, size: "90", class: "style_main_pic", title: "Update your profile pic"
       end
     end
   end
