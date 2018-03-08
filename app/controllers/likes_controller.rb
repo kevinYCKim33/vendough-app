@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     like = Like.find_or_create_by(user: current_user, dealing: dealing)
     like.save
     dealing.likes << like
-    users = dealing.likes.map do |like|
+    users = dealing.likes.order("id DESC").map do |like|
       user = User.find(like.user_id)
       {name: user.name, id: user.id}
     end

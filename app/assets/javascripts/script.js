@@ -103,5 +103,3 @@ function createLike() {
     })
   })
 }
-
-// $("#16 .likes").html(resp.liked_users.map(person => person.name).join(", "))
