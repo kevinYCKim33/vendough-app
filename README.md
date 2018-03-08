@@ -5,7 +5,7 @@ This rails app is a Venmo clone where users pay or charge others fictitious mone
 Check out the demo [here](https://vendough.herokuapp.com//)
 
 v2.0 featuring likes and profile pics coming out soon.  
-![Vendough 2.0](/app/images/vendough.2.0.png)
+![Vendough 2.0](/app/assets/images/vendough.2.0.png)
 
 ## Installation
 
