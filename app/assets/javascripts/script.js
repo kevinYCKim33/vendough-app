@@ -1,22 +1,31 @@
 $( document ).on('turbolinks:load',function() {
   // turbolinks is a rails 5 fix
-  let currentUserId = $('body').attr('data-userid')
+  let currentUserId = parseInt($('body').attr('data-userid'));
   if (top.location.pathname === '/' || top.location.pathname === '/users/' + currentUserId + '/dealings') {
     loadGlobalTransactions();
     loadContacts();
     loadPersonalTransactions();
-    createLike();
-    unlike();
     if (top.location.pathname === '/'){
-      return $("#globe").click()
+      $("#globe").click()
+    } else {
+      $("#you").click()
     }
-    return $("#you").click()
   }
 
+  // a bit forced way of getting other user's id
+  // href: /users/1/dealings
+  let urlArray = top.location.pathname.split("/"); // ["", "users", "1", "dealings"]
+  // the if condition extracts out the number 1, making sure it's not the current user
+  if (urlArray.length === 4 && urlArray[1] === "users" && urlArray[3] === "dealings" && urlArray[2] != currentUserId) {
+    let userId = parseInt(urlArray[2])
+    loadIndividualTransactions(userId)
+  }
+
+  createLike();
+  unlike();
     // loadDetailedTransaction();
     // createComment();
     // hideComments();
-
 });
 
 function loadGlobalTransactions() {
@@ -31,15 +40,19 @@ function loadGlobalTransactions() {
 function loadPersonalTransactions() {
   let currentUserId = parseInt($('body').attr('data-userid'));
   $("#you").on('click', function() {
-    $.get("/users/" + currentUserId + "/dealings" + ".json", function(resp){
-      if (resp.length > 0) {
-        const currentUserTransactions = new Transaction(resp).createTransactionPanels();
-        $('.list-group').html(currentUserTransactions);
-      } else {
-        const displayEmptyTransactionMessage = "<br><br><center><p><b>When you complete a transaction it will show up here.</b></p></center>"
-        $('.list-group').html(displayEmptyTransactionMessage);
-      }
-    })
+    loadIndividualTransactions(currentUserId);
+  })
+}
+
+function loadIndividualTransactions(userId) {
+  $.get("/users/" + userId + "/dealings" + ".json", function(resp){
+    if (resp.length > 0) {
+      const userTransactions = new Transaction(resp).createTransactionPanels();
+      $('.list-group').html(userTransactions);
+    } else {
+      const displayEmptyTransactionMessage = "<br><br><center><p><b>When you/this person completes a transaction it will show up here.</b></p></center>"
+      $('.list-group').html(displayEmptyTransactionMessage);
+    }
   })
 }
 
