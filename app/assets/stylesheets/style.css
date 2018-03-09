@@ -74,7 +74,6 @@
   display: flex;
   padding-right: 10px;
   padding-top: 5px;
-  border: 1px solid blue;
 }
 
 .sending-person {
@@ -91,8 +90,7 @@
 }
 
 .dealing-show-desc {
-  border: 1px solid red;
-  padding-left: 10px;
+  padding-left: 20px;
 }
 
 
@@ -124,7 +122,17 @@
   justify-content: space-between;
 }
 
+.comment-frog {
+  display: flex
+}
 
+.comment-pic {
+  padding-top: 4px;
+}
+
+.comment-info {
+  padding-left: 10px;
+}
 
 /* #\31 5 > div.like-comment > a:nth-child(1) */
 
@@ -136,8 +144,9 @@
   color: gray;
 }
 
+/* comment post form box width */
 #comment_content {
-  min-width: 300px;
+  min-width: 325px;
 }
 
 #error_explanation > ul {
