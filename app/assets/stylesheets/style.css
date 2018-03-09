@@ -37,6 +37,12 @@
   min-width: 450px;
 }
 
+/* transaction show div */
+#show > div {
+  /* max-width: 300px; */
+  min-width: 450px;
+}
+
 .like-comment > a {
   font-weight: bold;
   color: gray;
@@ -68,6 +74,7 @@
   display: flex;
   padding-right: 10px;
   padding-top: 5px;
+  border: 1px solid blue;
 }
 
 .sending-person {
@@ -83,8 +90,14 @@
 	left: 50px;
 }
 
+.dealing-show-desc {
+  border: 1px solid red;
+  padding-left: 10px;
+}
+
+
 .info {
-  width: 350px;
+  min-width: 350px;
 }
 
 .name-and-time {
@@ -124,7 +137,7 @@
 }
 
 #comment_content {
-  min-width: 250px;
+  min-width: 300px;
 }
 
 #error_explanation > ul {
