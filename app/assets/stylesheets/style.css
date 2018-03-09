@@ -93,6 +93,16 @@
   padding-left: 20px;
 }
 
+.show-heart {
+  cursor: pointer;
+  padding-top: 1px;
+}
+
+.unlike-heart {
+  cursor: pointer;
+  padding-top: 1px;
+}
+
 
 .info {
   min-width: 350px;

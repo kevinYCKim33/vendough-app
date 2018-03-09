@@ -25,6 +25,8 @@ $( document ).on('turbolinks:load',function() {
   unlike();
   // loadDetailedTransaction();
   createComment();
+  clickShowHeart();
+  clickUnlikeHeart();
   // hideComments();
 });
 
@@ -56,28 +58,28 @@ function loadIndividualTransactions(userId) {
   })
 }
 
-function loadDetailedTransaction() {
-  $(".list-group").on('click', '.details-button', function() {
-    let transactionId = this.href.split("/").slice().pop();
-    event.preventDefault();
-    $.get('/dealings/' + transactionId + '.json', function(resp) {
-      const detailedTransaction = new Transaction(resp).createDetailedTransactionPanel();
-      $(`#${transactionId}.list-group-item`).replaceWith(detailedTransaction);
-    })
-  })
-}
+// function loadDetailedTransaction() {
+//   $(".list-group").on('click', '.details-button', function() {
+//     let transactionId = this.href.split("/").slice().pop();
+//     event.preventDefault();
+//     $.get('/dealings/' + transactionId + '.json', function(resp) {
+//       const detailedTransaction = new Transaction(resp).createDetailedTransactionPanel();
+//       $(`#${transactionId}.list-group-item`).replaceWith(detailedTransaction);
+//     })
+//   })
+// }
 
-function hideComments() {
-  $('.list-group').on('click', '.hide-comments', function() {
-    event.preventDefault();
-    let transactionId = this.dataset.id;
-    $.get('/dealings/' + transactionId + '.json', function(resp) {
-      const simplePanel = new Transaction(resp).revertToSimpleTransactionPanel();
-      $(`#${transactionId}.comment`).remove();
-      $(`#${transactionId}.list-group-item`).replaceWith(simplePanel);
-    })
-  })
-}
+// function hideComments() {
+//   $('.list-group').on('click', '.hide-comments', function() {
+//     event.preventDefault();
+//     let transactionId = this.dataset.id;
+//     $.get('/dealings/' + transactionId + '.json', function(resp) {
+//       const simplePanel = new Transaction(resp).revertToSimpleTransactionPanel();
+//       $(`#${transactionId}.comment`).remove();
+//       $(`#${transactionId}.list-group-item`).replaceWith(simplePanel);
+//     })
+//   })
+// }
 
 function loadContacts() {
   $("#associates").on('click', function() {
@@ -116,6 +118,46 @@ function createLike() {
     })
   })
 }
+
+function clickShowHeart() {
+  $(".froggy").on('click', '.show-heart', function() {
+    let id = this.id;
+    let posting = $.post('/likes', {id});
+    posting.done(function(resp){
+      let names = resp.liked_users.map(person => {
+        return (`<a href=users/${person.id}/dealings>${person.name}</a>`)
+      });
+      $("#" + resp.dealing_id).css('color', 'rgb(061,149,206)');
+      $(".show-likes").html(names.join(", "));
+      $("#" + resp.dealing_id).addClass('unlike-heart').removeClass('show-heart');
+    })
+  })
+}
+
+function clickUnlikeHeart() {
+  $(".froggy").on('click', '.unlike-heart', function() {
+    // debugger;
+    $.ajax({
+      url: '/likes/' + this.id,
+      type: 'DELETE',
+      success: function(resp) {
+        if (resp.liked_users.length === 0) {
+          $(".show-likes").html("");
+        } else {
+          let names = resp.liked_users.map(person => {
+            return (`<a href=users/${person.id}/dealings>${person.name}</a>`)
+          })
+          $(".show-likes").html(names.join(", "));
+        }
+        $("#" + resp.dealing_id).css('color', '#a8a8a8');
+        $("#" + resp.dealing_id).addClass('show-heart').removeClass('unlike-heart');
+      }
+    });
+  })
+}
+
+
+
 
 function unlike() {
   $('.list-group').on('click', '.unlike-button', function(event) {
