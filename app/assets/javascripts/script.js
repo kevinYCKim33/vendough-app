@@ -1,17 +1,21 @@
 $( document ).on('turbolinks:load',function() {
   // turbolinks is a rails 5 fix
-  if (top.location.pathname === '/')
-    {
-      loadContacts();
-      loadGlobalTransactions();
-      loadPersonalTransactions();
-      loadDetailedTransaction();
-      createComment();
-      hideComments();
-      createLike();
-      unlike();
-      $("#globe").click()
+  let currentUserId = $('body').attr('data-userid')
+  if (top.location.pathname === '/' || top.location.pathname === '/users/' + currentUserId + '/dealings') {
+    loadGlobalTransactions();
+    loadContacts();
+    loadPersonalTransactions();
+    createLike();
+    unlike();
+    if (top.location.pathname === '/'){
+      return $("#globe").click()
     }
+    return $("#you").click()
+  }
+
+    // loadDetailedTransaction();
+    // createComment();
+    // hideComments();
 
 });
 
