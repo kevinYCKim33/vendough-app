@@ -23,9 +23,9 @@ $( document ).on('turbolinks:load',function() {
 
   createLike();
   unlike();
-    // loadDetailedTransaction();
-    // createComment();
-    // hideComments();
+  // loadDetailedTransaction();
+  createComment();
+  // hideComments();
 });
 
 function loadGlobalTransactions() {

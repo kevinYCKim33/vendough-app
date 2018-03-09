@@ -1,3 +1,9 @@
+/* transaction show page css here */
+.detailed-transaction {
+  display: flex;
+}
+
+
 .style_main_pic {
   border-radius: 50%
   /* border: none; */
@@ -56,6 +62,25 @@
 .sender-pic {
   padding-right: 10px;
   padding-top: 5px;
+}
+
+.participants-pic {
+  display: flex;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+.sending-person {
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+/* small circle on top of sending person */
+.receiving-person {
+	position: absolute;
+	top: 40px;
+	left: 50px;
 }
 
 .info {
