@@ -21,8 +21,8 @@
 
     <div class="list-group-item">
       <div class="froggy">
-        <span id="<%=@dealing.id%>" class="glyphicon glyphicon-heart show-heart" style="color: #a8a8a8"></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        <div class="show-likes"></div>
+        <span id="<%=@dealing.id%>" class="glyphicon glyphicon-heart <%=show_heart_or_unlike_heart(@dealing)%>" style="color: <%=blue_or_gray(@dealing)%>"></span> &nbsp;&nbsp;
+        <div class="show-likes"><%=raw(display_likes(@dealing))%></div>
       </div>
     </div>
 

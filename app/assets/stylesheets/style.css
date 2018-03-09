@@ -3,7 +3,9 @@
   display: flex;
 }
 
-
+.show-likes > a {
+  font-size: 13px;
+}
 .style_main_pic {
   border-radius: 50%
   /* border: none; */

@@ -156,9 +156,6 @@ function clickUnlikeHeart() {
   })
 }
 
-
-
-
 function unlike() {
   $('.list-group').on('click', '.unlike-button', function(event) {
     event.preventDefault();
