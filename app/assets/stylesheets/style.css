@@ -1,4 +1,8 @@
 /* transaction show page css here */
+.pending {
+  max-width: 370px;
+}
+
 .detailed-transaction {
   display: flex;
 }
