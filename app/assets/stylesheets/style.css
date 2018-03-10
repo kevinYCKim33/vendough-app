@@ -3,6 +3,10 @@
   max-width: 370px;
 }
 
+.request {
+  max-width: 370px;
+}
+
 .detailed-transaction {
   display: flex;
 }

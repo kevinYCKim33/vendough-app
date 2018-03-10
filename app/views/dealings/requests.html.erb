@@ -10,13 +10,21 @@
 <div class="container" id="request">
   <div class="list-group">
     <%@requests.each do |request|%>
-    <div class="list-group-item" >
-      <b> <%= link_to request.sender_name, request.sender %> requests <%=number_to_currency(request.amount) %></b><br>
-      <small style="color: #a8a8a8">  <%= local_time(request.created_at,'%b %d, %Y %I:%M %p') %> </small><br>
-      <%= request.description %>
-      <br>
-      <%= display_pending_tags(request.tags)%>
-      <div class= "actions">
+    <div class="list-group-item request" >
+      <div class="froggy">
+        <div>
+          <img src=<%=request.sender.avatar_url%> width="60" height="60" style="border-radius:50%">
+        </div>
+        <div style="padding-left: 17px;">
+          <b> <%= link_to request.sender_name, request.sender %> requests <%=number_to_currency(request.amount) %></b><br>
+          <small style="color: #a8a8a8">  <%= local_time(request.created_at,'%b %d, %Y %I:%M %p') %> </small><br>
+          <%= request.description %>
+          <br>
+          <%= display_pending_tags(request.tags)%>
+        </div>
+      </div>
+
+      <div class="actions" style="padding-top: 5px;">
         <%= form_for request, method: :delete do |f| %>
           <%= f.submit "Decline", class: "btn btn-sm btn-default", onclick: "return confirm('Decline request?');"  %>
         <% end %>
@@ -25,9 +33,7 @@
           <%= f.submit "Pay", class: "btn btn-sm btn-primary", onclick: "return confirm('Approve request?');" %>
         <% end %>
       </div>
-
     </div>
-
     <%end%>
   </div> <!--list-group -->
 </div>
