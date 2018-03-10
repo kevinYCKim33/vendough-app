@@ -338,9 +338,14 @@
   border-color: rgb(061,149,206);
 }
 
+/* login page form width */
+#new_user {
+  max-width: 270px;
+}
 body > nav > div > div.navbar-header > button > span {
   color: white;
 }
+
 
  .form-signin {
    max-width: 330px;
