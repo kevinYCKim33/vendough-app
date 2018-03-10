@@ -1,3 +1,7 @@
+body {
+  min-height: 100%;
+}
+
 /* transaction show page css here */
 .pending {
   max-width: 370px;
