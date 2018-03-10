@@ -2,7 +2,7 @@
 <div class="list-group-item" id={{id}}>
   <div class="froggy">
     <div class="sender-pic">
-      <img src={{sender.avatar_url}} width="60" height="60" style="border-radius:50%">
+      <a href="/users/{{sender.id}}/dealings"><img src={{sender.avatar_url}} width="60" height="60" style="border-radius:50%"></a>
     </div>
     <br />
     <div class="info">
@@ -19,7 +19,7 @@
       </div>
 
       <div class="description">
-        {{description}}
+        <a class="dealing-desc" href="/dealings/{{id}}">{{description}}</a>
       </div>
 
       <div id={{id}} class="likes">

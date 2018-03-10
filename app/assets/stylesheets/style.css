@@ -11,6 +11,11 @@
   /* border: none; */
 }
 
+.dealing-desc {
+  text-decoration: none;
+  color: black;
+}
+
 #update-pic {
   display: flex;
   flex-direction: column;
