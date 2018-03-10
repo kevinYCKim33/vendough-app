@@ -1,3 +1,178 @@
+body {
+  min-height: 100%;
+}
+
+/* transaction show page css here */
+.pending {
+  max-width: 370px;
+}
+
+.request {
+  max-width: 370px;
+}
+
+.detailed-transaction {
+  display: flex;
+}
+
+.show-likes > a {
+  font-size: 13px;
+}
+.style_main_pic {
+  border-radius: 50%
+  /* border: none; */
+}
+
+.dealing-desc {
+  text-decoration: none;
+  color: black;
+}
+
+#update-pic {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  height: 500px;
+  width: 500px;
+}
+
+/* #feed > center > a */
+
+/* pay or request button fix later has super precedence for some reason */
+#feed > center > .ask {
+  background-color: rgb(061,149,206);
+  border-color: rgb(061,149,206);
+  width: 200px;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
+}
+
+#feed > center > .ask:hover {
+  background-color: rgb(52,109,241);
+  border-color: rgb(52,109,241);
+}
+
+/* #profile-link {
+  background-color: white;
+  border-color: white;
+  box-shadow: 0 0 0 0
+} */
+
+/* like and comment links */
+.list-group {
+  min-width: 450px;
+}
+
+/* transaction show div */
+#show > div {
+  /* max-width: 300px; */
+  min-width: 450px;
+}
+
+.like-comment > a {
+  font-weight: bold;
+  color: gray;
+  text-decoration: none;
+}
+
+/* names listed when liking a transaction */
+.likes > a {
+  color: gray;
+  font-size: 12px;
+}
+
+/* heart sign */
+.likes > span {
+  font-size: 12px;
+}
+
+.froggy {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.sender-pic {
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+.participants-pic {
+  display: flex;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+.sending-person {
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+/* small circle on top of sending person */
+.receiving-person {
+	position: absolute;
+	top: 40px;
+	left: 50px;
+}
+
+.dealing-show-desc {
+  padding-left: 20px;
+}
+
+.show-heart {
+  cursor: pointer;
+  padding-top: 1px;
+}
+
+.unlike-heart {
+  cursor: pointer;
+  padding-top: 1px;
+}
+
+
+.info {
+  min-width: 350px;
+}
+
+.name-and-time {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date {
+  color: gray;
+}
+
+.description {
+  padding-top: 0.5em;
+}
+
+.likes {
+  padding-top: 0.5em;
+  color: gray;
+}
+
+.like-comment-cost {
+  padding-top: 0.5em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-frog {
+  display: flex
+}
+
+.comment-pic {
+  padding-top: 4px;
+}
+
+.comment-info {
+  padding-left: 10px;
+}
+
+/* #\31 5 > div.like-comment > a:nth-child(1) */
+
+
 /*new comment send button */
 #new_comment > input.btn.btn-sm.btn-primary {
   border-color: gray;
@@ -5,8 +180,9 @@
   color: gray;
 }
 
+/* comment post form box width */
 #comment_content {
-  min-width: 250px;
+  min-width: 325px;
 }
 
 #error_explanation > ul {
@@ -14,7 +190,7 @@
 }
 
  .container, #feed, #request, #incomplete, #show, #hashtags {
-   max-width: 400px;
+   max-width: 450px;
  }
 
 /*remove bullets on errors.*/
@@ -98,6 +274,13 @@
      color: white;
    }
 
+   /* add to fund button on main page */
+  #feed > center > h5 > a:hover {
+    border-color: white;
+    background-color: gray;
+    color: white;
+  }
+
 .page-header h2 {
    margin-top: 0;
    text-align: center;
@@ -117,13 +300,10 @@
 }
 
 .container, #new {
-  max-width: 300px;
+  max-width: 350px;
 }
 
- .list-group {
-   max-width: 400px;
 
- }
 
  /* all panels  */
   div > .list-group-item {
@@ -166,12 +346,7 @@
  }
 
 /*pay or request button for other users*/
- #feed > center > a {
-   background-color: rgb(061,149,206);
-   border-color: rgb(061,149,206);
-   width: 200px;
-   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
- }
+
 
  body > nav > div > div.navbar-header > a.navbar-brand.active {
    color: white;
@@ -194,9 +369,14 @@
   border-color: rgb(061,149,206);
 }
 
+/* login page form width */
+#new_user {
+  max-width: 270px;
+}
 body > nav > div > div.navbar-header > button > span {
   color: white;
 }
+
 
  .form-signin {
    max-width: 330px;

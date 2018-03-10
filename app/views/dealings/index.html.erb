@@ -1,21 +1,18 @@
 <div class="container" id="feed">
   <center>
+    <% if flash[:message] %>
+      <p style="color:green;"> <%= flash[:message] %> </p>
+    <% end %>
     <h4><%= current_user.name %></h4>
+        <%= current_user_pic %>
     <h5>
       <%= "#{display_credit} in Vendough" %>
       <%= link_to "Add to Fund", add_fund_path, {style: "display: inline", type: "button", class: "btn btn-secondary btn-sm"} %>
     </h5>
 
-    <div class="btn-group" role="group" aria-label="...">
-      <button type="button" class="btn btn-default" autofocus="autofocus" id="globe" title="See all transactions from the Vendough community"><span class="glyphicon glyphicon-globe"></button>
-      <button type="button" class="btn btn-default" id="associates" title="See other Vendough users to pay or request from"><span class="glyphicon glyphicon-user"><span class="glyphicon glyphicon-user"></button>
-      <button type="button" class="btn btn-default" id="you" title="See transactions that only you're directly involved in"><span class="glyphicon glyphicon-user"></button>
-    </div>
-      <%# if flash[:message] %>
-        <!-- <p style="color:green;"> <%#= flash[:message] %> </p> -->
-      <%# end %>
-      <%= render 'flash_message' %>
+      <%= render 'globe_contacts_user' %>
 
+      <%= render 'flash_message' %>
 
       <% if @dealings.empty? %>
         <p><b>Once you and/or your contacts complete transactions <br>
@@ -23,8 +20,6 @@
       <% end %>
   </center>
 
-  <%= content_tag :div, class: "list-group" do %>
-    <%= render partial: 'dealing_details', collection: @dealings, as: :dealing%>
-  <% end %>
+  <div class="list-group"></div>
 
 </div>

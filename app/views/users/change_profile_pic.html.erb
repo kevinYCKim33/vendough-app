@@ -1,0 +1,21 @@
+<center>
+<div id="update-pic">
+  <h4> Change Profile Picture </h4>
+  <br />
+  <%=image_tag @user.avatar_url, size: "120", class: "style_main_pic"%>
+  <br />
+  <p><b>Paste in an image url from sites such as imgur below.</b></p>
+  <%= form_for @user, as: :patch, url: update_profile_pic_path do |f| %>
+    <div class="input-group" >
+      <div style="min-width: 250px;">
+      <%= f.text_field :avatar_url, class: "form-control" %>
+      </div>
+      <br />
+      <br />
+      <div style="max-width: 150px">
+        <%= f.submit "Update Pic", class: "btn btn-md btn-primary btn-block" %>
+      </div>
+    </div>
+  <% end %>
+ </div>
+</center>

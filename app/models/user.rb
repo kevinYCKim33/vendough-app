@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :likes
   has_many :comments, through: :transaction
   validates_numericality_of :credit, :greater_than_or_equal_to => 0, :message => "Insufficient funds to complete transaction."
   has_many :dealings, foreign_key: "sender_id"

@@ -5,26 +5,22 @@
     <% end %>
     <h4><%= @user.name %></h4>
     <% if own_page? %>
+      <%= current_user_pic %>
       <h5>
         <%= "#{display_credit} in Vendough" %>
-        <%= link_to "Add to Fund", add_fund_path, {style: "display: inline", type: "button", class: "btn btn-secondary btn-sm"} %>
+        <%= link_to "Add to Fund", add_fund_path, {style: "display: inline", type: "button", class: "btn btn-secondary btn-sm add-to-fund"} %>
       </h5>
-      <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default" id="globe"><span class="glyphicon glyphicon-globe"></button>
-        <button type="button" class="btn btn-default" id="associates"><span class="glyphicon glyphicon-user"><span class="glyphicon glyphicon-user"></button>
-        <button type="button" class="btn btn-default" autofocus="autofocus" id="you"><span class="glyphicon glyphicon-user"></button>
-      </div>
+
+      <%= render 'dealings/globe_contacts_user' %>
+
     <% else %>
-      <a href="/users/<%=@user.id%>/dealings/new" type="button" class="btn btn-primary btn-sm btn-block">Pay or Request</a>
+      <%= other_user_pic(@user) %>
+      <br><br>
+      <a href="/users/<%=@user.id%>/dealings/new" type="button" class="btn btn-primary btn-sm btn-block ask">Pay or Request</a>
       <br>
-      <% if @dealings.empty? %>
-        <br>
-        <p><b>This contact has not made any Vendough <br>
-        transactions yet</b></p>
-      <% end %>
     <% end %>
   </center>
-    <%= content_tag :div, class: "list-group" do %>
-      <%= render partial: '/dealings/dealing_details', collection: @dealings, as: :dealing%>
-    <% end %>
+
+  <div class="list-group"></div>
+
 </div>

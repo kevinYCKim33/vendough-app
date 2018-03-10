@@ -1,3 +1,42 @@
+//a lotta code just to get the current user's name to show up first on a like list
+Handlebars.registerHelper('likes_list', function() {
+  let namesList = this.likes;
+  if (namesList.length > 0) {
+    let heartColor = 'gray'
+    let currentUserIndex = getCurrentUserIndex(namesList);
+
+    if (currentUserIndex > -1) {
+      heartColor = 'rgb(061,149,206)'
+      namesList.unshift(namesList.splice(currentUserIndex,1)[0]);
+    }
+    let names = namesList.map(person => {
+     	return (`<a href=users/${person.liker.id}/dealings>${person.liker.name}</a>`)
+    });
+    return new Handlebars.SafeString(`<span class="glyphicon glyphicon-heart" style="color:${heartColor}"></span> &nbsp;${names.join(", ")}`);
+  }
+})
+
+Handlebars.registerHelper('number_of_comments', function() {
+  if (this.comments.length > 0) {
+    return new Handlebars.SafeString('&nbsp;&nbsp;<span class="glyphicon glyphicon-comment" style="color: gray"></span>' + " " + this.comments.length);
+  }
+})
+
+Handlebars.registerHelper('like_or_unlike_button', function() {
+  return getCurrentUserIndex(this.likes) > -1 ? "unlike-button" : "like-button"
+})
+
+Handlebars.registerHelper('like_or_unlike', function() {
+  return getCurrentUserIndex(this.likes) > -1 ? "Unlike" : "Like"
+})
+
+function getCurrentUserIndex(namesList) {
+  let currentUserId = parseInt($('body').attr('data-userid'));
+  return currentUserIndex = namesList.findIndex((person) => {
+    return person.user_id === currentUserId;
+  });
+}
+
 Handlebars.registerHelper('charged_or_paid', function() {
   if(this.action === "request") {
     return new Handlebars.SafeString("charged")

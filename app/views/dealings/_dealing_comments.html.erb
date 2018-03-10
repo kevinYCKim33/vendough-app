@@ -1,5 +1,12 @@
 <div class="list-group-item">
-  <font size="-1.2"><%=commenter(comment)%>: <%= comment.content %></font>
-  <br>
-  <small style="color:#a8a8a8"><%= local_time(comment.created_at, '%b %d, %Y %I:%M %p') %> </small>
+  <div class="comment-frog">
+    <div class="comment-pic">
+      <img src=<%=comment.user.avatar_url%> width="30" height="30" style="border-radius:50%">
+    </div>
+    <div class="comment-info">
+      <font size="-1.2"><a href="/users/<%=comment.user.id%>"><%=comment.user.name%></a>: <%=comment.content%></font>
+      <br>
+      <small style="color:#a8a8a8"><%= local_time(comment.created_at, '%b %d, %Y %I:%M %p') %></small>
+    </div>
+  </div>
 </div>

@@ -1,21 +1,44 @@
 {{#transactions}}
 <div class="list-group-item" id={{id}}>
+  <div class="froggy">
+    <div class="sender-pic">
+      <a href="/users/{{sender.id}}/dealings"><img src={{sender.avatar_url}} width="60" height="60" style="border-radius:50%"></a>
+    </div>
+    <br />
+    <div class="info">
+      <div class="name-and-time">
+        <div class="names">
+          <b><a href="/users/{{sender.id}}/dealings">{{sender.name}}</a> </b>
+          {{charged_or_paid}}
+          <b><a href="/users/{{recipient.id}}/dealings">{{recipient.name}}</a></b>
+        </div>
 
-  <p><b><a href="/users/{{sender.id}}/dealings">{{sender.name}}</a>
-  </b>{{charged_or_paid}}<b>
+        <div class="date">
+          {{concise_date}} <span class="glyphicon glyphicon-globe"></span>
+        </div>
+      </div>
 
-    <a href="/users/{{recipient.id}}/dealings">{{recipient.name}}</a></b></p>
+      <div class="description">
+        <a class="dealing-desc" href="/dealings/{{id}}">{{description}}</a>
+      </div>
 
-  <div style="position: absolute; top: 10px; right: 15px; width: 90px; text-align:right;">
-    {{concise_date}} <span class="glyphicon glyphicon-globe"></span>
-</div>
-  <b><div style="color: {{green_or_red}}; position: absolute; bottom: 48px; right: 15px; width: 150px; text-align:right;">{{show_amount}}</div></b>
+      <div id={{id}} class="likes">
+        {{likes_list}}
+      </div>
 
-  <p> {{description}}</p>
+      <div class="like-comment-cost">
+        <div class="like-comment">
+          <a class={{like_or_unlike_button}} id={{id}} href="#">{{like_or_unlike}}</a>
+          &emsp;
+          <a href="/dealings/{{id}}">Comment {{number_of_comments}}</a>
+        </div>
 
-  <a href="/dealings/{{id}}" type="button" class="details-button btn btn-sm btn-default btn-block">View Details</a>
-
-
+        <div style="color: {{green_or_red}}">
+          <b>{{show_amount}}</b>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 {{/transactions}}
