@@ -262,6 +262,13 @@
      color: white;
    }
 
+   /* add to fund button on main page */
+  #feed > center > h5 > a:hover {
+    border-color: white;
+    background-color: gray;
+    color: white;
+  }
+
 .page-header h2 {
    margin-top: 0;
    text-align: center;
