@@ -142,7 +142,7 @@ function clickUnlikeHeart() {
       type: 'DELETE',
       success: function(resp) {
         if (resp.liked_users.length === 0) {
-          $(".show-likes").html("");
+          $(".show-likes").html("Be the first to like this.");
         } else {
           let names = resp.liked_users.map(person => {
             return (`<a href=users/${person.id}/dealings>${person.name}</a>`)
