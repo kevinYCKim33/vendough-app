@@ -16,6 +16,12 @@ Handlebars.registerHelper('likes_list', function() {
   }
 })
 
+Handlebars.registerHelper('number_of_comments', function() {
+  if (this.comments.length > 0) {
+    return new Handlebars.SafeString('&nbsp;&nbsp;<span class="glyphicon glyphicon-comment" style="color: gray"></span>' + " " + this.comments.length);
+  }
+})
+
 Handlebars.registerHelper('like_or_unlike_button', function() {
   return getCurrentUserIndex(this.likes) > -1 ? "unlike-button" : "like-button"
 })
