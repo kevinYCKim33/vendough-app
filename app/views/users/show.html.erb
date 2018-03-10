@@ -15,7 +15,8 @@
 
     <% else %>
       <%= other_user_pic(@user) %>
-      <a href="/users/<%=@user.id%>/dealings/new" type="button" class="btn btn-primary btn-sm btn-block">Pay or Request</a>
+      <br><br>
+      <a href="/users/<%=@user.id%>/dealings/new" type="button" class="btn btn-primary btn-sm btn-block ask">Pay or Request</a>
       <br>
     <% end %>
   </center>

@@ -20,13 +20,20 @@
   width: 500px;
 }
 
+/* #feed > center > a */
+
 /* pay or request button fix later has super precedence for some reason */
-/* #feed > center > a {
+#feed > center > .ask {
   background-color: rgb(061,149,206);
   border-color: rgb(061,149,206);
   width: 200px;
   box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);
-} */
+}
+
+#feed > center > .ask:hover {
+  background-color: rgb(52,109,241);
+  border-color: rgb(52,109,241);
+}
 
 /* #profile-link {
   background-color: white;
