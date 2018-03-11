@@ -6,18 +6,56 @@ Check out the working demo [here](https://vendough.herokuapp.com//).
 
 Vendough is built using Rails and jQuery.  
 
+<center>
 ![main-page](screen-caps/main-page.png)
 ![show-page](screen-caps/show-page.png)
-![transaction.png](screen-caps/transaction.png-pag)
-
+![transaction.png](screen-caps/transaction.png)
+</center>
 
 ## Installation
 
+### Things you will need:
+
+- [Rails](http://rubyonrails.org/)
+- [Postgres](https://www.postgresql.org/)
+
+### Postgres
+
+You must have [Postgres](https://www.postgresql.org/) installed in your local environment. Open up a Postgres terminal then enter:
+
+```
+CREATE role vendough_app WITH createdb
+\quit
+```
+
+### Rails Local Environment Setup
+
 Clone into local repository.
 
-Run rake db:migrate in terminal.
+Type:
 
-Run rails s in terminal.
+```
+rails db:create
+```
+
+and
+
+```
+rake db:migrate
+```
+also run
+
+```
+bundle install
+```
+
+to load up gems.
+
+Finally, run in terminal:
+
+```
+rails s
+```
 
 Go to a local host, and start Vendoughing away.
 
