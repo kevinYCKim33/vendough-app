@@ -7,9 +7,9 @@ Check out the working demo [here](https://vendough.herokuapp.com//).
 Vendough is built using Rails and jQuery.  
 
 <p align="center">
-  <img src="screen-caps/main-page.png"/>
-  <img src="screen-caps/show-page.png"/>
-  <img src="screen-caps/transaction.png"/>
+  <img style="border: 1px solid black" src="screen-caps/main-page.png"/>
+  <img style="border: 1px solid black" src="screen-caps/show-page.png"/>
+  <img style="border: 1px solid black" src="screen-caps/transaction.png"/>
 </p>
 
 
