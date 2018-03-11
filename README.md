@@ -6,11 +6,11 @@ Check out the working demo [here](https://vendough.herokuapp.com//).
 
 Vendough is built using Rails and jQuery.  
 
-<div align="center">
-  ![main-page](screen-caps/main-page.png)
-  ![show-page](screen-caps/show-page.png)
-  ![transaction.png](screen-caps/transaction.png)
-<div>
+<p align="center">
+  <img src="screen-caps/main-page.png"/>
+  <img src="screen-caps/show-page.png"/>
+  <img src="screen-caps/transaction.png"/>
+</p>
 
 
 ## Installation
