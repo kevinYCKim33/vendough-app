@@ -37,14 +37,14 @@ class DealingsController < ApplicationController
         @dealing.status = "incomplete"
         @dealing.save
         flash[:message] = "Your request to #{@dealing.recipient.name} has been sent."
-        redirect_to user_path(current_user)
+        redirect_to user_dealings_path(current_user)
       elsif @dealing.action == "pay"
         @dealing.pay_dealing
         if @dealing.sender.save #the sender has enough funds
           @dealing.recipient.save
           @dealing.save
           flash[:message] = "You have successfully sent money to #{@dealing.recipient.name}."
-          redirect_to user_path(current_user)
+          redirect_to user_dealings_path(current_user)
         else #the sender does not have enough funds
           flash[:message] = @dealing.sender.errors[:credit].first
           render :new
