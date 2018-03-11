@@ -8,7 +8,9 @@ Vendough is built using Rails and jQuery.
 
 <p align="center">
   <img style="border: 1px solid black" src="screen-caps/main-page.png"/>
+  <br />
   <img style="border: 1px solid black" src="screen-caps/show-page.png"/>
+  <br />
   <img style="border: 1px solid black" src="screen-caps/transaction.png"/>
 </p>
 
